@@ -1,6 +1,6 @@
 import { TopNavigation } from "@/components/layout/TopNavigation";
 
-export default function DashboardLayout({
+export default function AppLayout({
   children,
 }: {
   children: React.ReactNode;

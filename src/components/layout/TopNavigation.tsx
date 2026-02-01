@@ -7,8 +7,8 @@ import { Search, RotateCcw, User } from "lucide-react";
 export function TopNavigation() {
   const pathname = usePathname();
 
-  const isProfile = pathname === "/profile";
-  const isDashboard = pathname === "/";
+  const isProfile = pathname === "/app/profile";
+  const isDashboard = pathname === "/app";
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#121212]/70 backdrop-blur-xl border-b border-white/10">
@@ -24,7 +24,7 @@ export function TopNavigation() {
         {/* Navigation Links */}
         <nav className="flex items-center gap-2">
           <Link
-            href="/"
+            href="/app"
             className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
               isDashboard
                 ? "bg-[#00D1FF]/20 text-[#00D1FF] border border-[#00D1FF]/30"
@@ -34,7 +34,7 @@ export function TopNavigation() {
             Dashboard
           </Link>
           <Link
-            href="/profile"
+            href="/app/profile"
             className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
               isProfile
                 ? "bg-[#00D1FF]/20 text-[#00D1FF] border border-[#00D1FF]/30"
@@ -52,7 +52,7 @@ export function TopNavigation() {
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40 group-focus-within:text-[#00D1FF] transition-colors" />
             <input
               type="text"
-              placeholder="Search games, archetypes, or strategies..."
+              placeholder="Rechercher jeux, archétypes, stratégies..."
               className="
                 w-full h-12 pl-12 pr-4 rounded-2xl
                 bg-white/5 border border-white/10
@@ -67,7 +67,7 @@ export function TopNavigation() {
         {/* Retake Quiz Button */}
         <button className="px-5 py-2.5 rounded-2xl bg-gradient-to-r from-[#00D1FF]/20 to-[#00D1FF]/10 border border-[#00D1FF]/30 text-[#00D1FF] hover:from-[#00D1FF]/30 hover:to-[#00D1FF]/20 hover:shadow-lg hover:shadow-[#00D1FF]/20 transition-all duration-300 flex items-center gap-2">
           <RotateCcw className="w-4 h-4" />
-          <span className="whitespace-nowrap">Retake Archetype Quiz</span>
+          <span className="whitespace-nowrap">Refaire le Quiz</span>
         </button>
       </div>
     </header>
