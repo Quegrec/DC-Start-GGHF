@@ -9,37 +9,41 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { Lightbulb } from "lucide-react";
+import { Card, SectionHeader, StatCard } from "@/components/common";
+import { Brain, TrendingUp, Sparkles } from "lucide-react";
 
 export function PersonalityArchetype() {
   const personalityData = [
-    { trait: "Empathy", value: 88, fullMark: 100 },
-    { trait: "Team Spirit", value: 76, fullMark: 100 },
-    { trait: "Perfectionism", value: 91, fullMark: 100 },
-    { trait: "Strategic Focus", value: 84, fullMark: 100 },
-    { trait: "Resilience", value: 72, fullMark: 100 },
+    { trait: "Empathie", value: 88, fullMark: 100 },
+    { trait: "Esprit d'équipe", value: 76, fullMark: 100 },
+    { trait: "Perfectionnisme", value: 91, fullMark: 100 },
+    { trait: "Vision stratégique", value: 84, fullMark: 100 },
+    { trait: "Résilience", value: 72, fullMark: 100 },
     { trait: "Communication", value: 79, fullMark: 100 },
   ];
 
-  // Find highest traits
+  // Trouver les traits les plus forts
   const sortedTraits = [...personalityData].sort((a, b) => b.value - a.value);
   const topTrait = sortedTraits[0];
   const secondTrait = sortedTraits[1];
 
   return (
-    <div className="rounded-2xl bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 p-10 backdrop-blur-xl relative overflow-hidden">
-      {/* Top Glow with stronger effect */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00D1FF] to-transparent" />
+    <Card glow glowColor="#00D1FF" className="p-10 relative overflow-hidden">
+      {/* Effet de lumière subtil en haut */}
       <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#00D1FF]/10 to-transparent pointer-events-none" />
 
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-semibold mb-3">Personality Archetype</h2>
-        <p className="text-white/60">The soul of your playstyle</p>
+        <SectionHeader
+          title="Archétype de Personnalité"
+          description="L'âme de votre style de jeu"
+          centered
+        />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        {/* Hex Grid Chart with Glow */}
+        {/* Graphique Radar avec effet lumineux */}
         <div className="relative">
-          {/* Cyber Blue Glow Background */}
+          {/* Fond lumineux cyan */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-80 h-80 rounded-full bg-[#00D1FF]/5 blur-3xl" />
           </div>
@@ -47,7 +51,7 @@ export function PersonalityArchetype() {
             <div className="w-60 h-60 rounded-full bg-[#00D1FF]/10 blur-2xl" />
           </div>
 
-          {/* Chart */}
+          {/* Graphique */}
           <div className="relative h-96">
             <ResponsiveContainer width="100%" height="100%">
               <RadarChart data={personalityData}>
@@ -67,7 +71,7 @@ export function PersonalityArchetype() {
                 />
                 <PolarAngleAxis
                   dataKey="trait"
-                  tick={{ fill: "#ffffff", fontSize: 13, fontWeight: 600 }}
+                  tick={{ fill: "#ffffff", fontSize: 11, fontWeight: 600 }}
                   stroke="#00D1FF50"
                 />
                 <PolarRadiusAxis
@@ -77,7 +81,7 @@ export function PersonalityArchetype() {
                   stroke="#00D1FF30"
                 />
                 <Radar
-                  name="Personality Traits"
+                  name="Traits de personnalité"
                   dataKey="value"
                   stroke="#00D1FF"
                   fill="#00D1FF"
@@ -89,18 +93,18 @@ export function PersonalityArchetype() {
             </ResponsiveContainer>
           </div>
 
-          {/* Center Label */}
+          {/* Label central */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none">
-            <div className="text-sm text-white/60 mb-1">Your Soul</div>
-            <div className="text-2xl font-bold text-[#00D1FF]">
+            <div className="text-sm text-white/60 mb-1">Votre essence</div>
+            <div className="text-xl font-bold text-[#00D1FF]">
               {topTrait.trait}
             </div>
           </div>
         </div>
 
-        {/* Personality Breakdown */}
+        {/* Détail de la personnalité */}
         <div className="space-y-6">
-          {/* Trait Scores */}
+          {/* Scores des traits */}
           <div className="space-y-3">
             {personalityData.map((item) => {
               const isTop =
@@ -141,9 +145,9 @@ export function PersonalityArchetype() {
             })}
           </div>
 
-          {/* Insight Card */}
+          {/* Carte d'analyse */}
           <div className="p-6 rounded-2xl bg-gradient-to-br from-[#00D1FF]/10 to-[#00D1FF]/5 border border-[#00D1FF]/30 relative overflow-hidden">
-            {/* Subtle glow */}
+            {/* Lueur subtile */}
             <div className="absolute inset-0 bg-gradient-to-br from-[#00D1FF]/5 to-transparent pointer-events-none" />
 
             <div className="relative">
@@ -152,54 +156,55 @@ export function PersonalityArchetype() {
                   <Lightbulb className="w-4 h-4 text-[#00D1FF]" />
                 </div>
                 <h3 className="font-semibold text-[#00D1FF]">
-                  Personality Insight
+                  Analyse de personnalité
                 </h3>
               </div>
 
               <p className="text-sm text-white/80 leading-relaxed">
-                Your{" "}
+                Votre score de{" "}
                 <span className="font-semibold text-[#00D1FF]">
                   {topTrait.trait.toLowerCase()}
                 </span>{" "}
-                score ({topTrait.value}%) aligns you with the{" "}
-                <span className="font-semibold text-[#00D1FF]">Sniper</span>{" "}
-                path, while your high{" "}
+                ({topTrait.value}%) vous oriente vers le profil{" "}
+                <span className="font-semibold text-[#00D1FF]">Sniper</span>,
+                tandis que votre forte{" "}
                 <span className="font-semibold text-[#00D1FF]">
                   {secondTrait.trait.toLowerCase()}
                 </span>{" "}
-                ({secondTrait.value}%) makes you a natural{" "}
-                <span className="font-semibold text-[#00D1FF]">Medic</span>. This
-                unique combination suggests you excel at precision teamwork and
-                supportive strategies.
+                ({secondTrait.value}%) fait de vous un{" "}
+                <span className="font-semibold text-[#00D1FF]">Medic</span> naturel.
+                Cette combinaison unique suggère que vous excellez dans le travail
+                d&apos;équipe précis et les stratégies de soutien.
               </p>
             </div>
           </div>
 
-          {/* Stats Summary */}
+          {/* Résumé des stats */}
           <div className="grid grid-cols-3 gap-4">
-            <div className="text-center p-4 rounded-xl bg-white/5 border border-white/10">
-              <div className="text-2xl font-bold text-[#00D1FF] mb-1">
-                {topTrait.value}%
-              </div>
-              <div className="text-xs text-white/60">Highest Trait</div>
-            </div>
-            <div className="text-center p-4 rounded-xl bg-white/5 border border-white/10">
-              <div className="text-2xl font-bold text-[#00D1FF] mb-1">
-                {Math.round(
-                  personalityData.reduce((sum, item) => sum + item.value, 0) /
-                    personalityData.length
-                )}
-                %
-              </div>
-              <div className="text-xs text-white/60">Average Score</div>
-            </div>
-            <div className="text-center p-4 rounded-xl bg-white/5 border border-white/10">
-              <div className="text-2xl font-bold text-[#00D1FF] mb-1">6</div>
-              <div className="text-xs text-white/60">Core Traits</div>
-            </div>
+            <StatCard
+              icon={Brain}
+              value={`${topTrait.value}%`}
+              label="Trait dominant"
+              color="#00D1FF"
+            />
+            <StatCard
+              icon={TrendingUp}
+              value={`${Math.round(
+                personalityData.reduce((sum, item) => sum + item.value, 0) /
+                  personalityData.length
+              )}%`}
+              label="Score moyen"
+              color="#10B981"
+            />
+            <StatCard
+              icon={Sparkles}
+              value="6"
+              label="Traits analysés"
+              color="#8B5CF6"
+            />
           </div>
         </div>
       </div>
-    </div>
+    </Card>
   );
 }

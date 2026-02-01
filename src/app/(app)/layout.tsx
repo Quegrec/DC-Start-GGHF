@@ -1,4 +1,4 @@
-import { TopNavigation } from "@/components/layout/TopNavigation";
+import { Navbar } from "@/components/layout/Navbar";
 
 export default function AppLayout({
   children,
@@ -6,8 +6,8 @@ export default function AppLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-[#121212]">
-      <TopNavigation />
+    <div className="min-h-screen bg-[#0a0a0a]">
+      <Navbar variant="app" />
       {children}
     </div>
   );

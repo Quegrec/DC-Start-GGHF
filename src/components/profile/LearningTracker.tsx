@@ -1,89 +1,89 @@
 "use client";
 
-import { useState } from "react";
-import { CheckCircle2, Clock, BookOpen, TrendingUp } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
-
-interface Guide {
-  id: number;
-  title: string;
-  game: string;
-  progress: number;
-  category: string;
-  icon: LucideIcon;
-}
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { CheckCircle2, Clock, BookOpen, TrendingUp, Loader2, Play } from "lucide-react";
+import { Card, SectionHeader, ProgressBar } from "@/components/common";
+import { getAllGuides, type Guide } from "@/data/guides";
+import { getLearningProgress, type LearningProgress } from "@/data/user";
 
 export function LearningTracker() {
-  const [activeTab, setActiveTab] = useState<"completed" | "inProgress">(
-    "inProgress"
-  );
+  const [activeTab, setActiveTab] = useState<"completed" | "inProgress">("inProgress");
+  const [guides, setGuides] = useState<Guide[]>([]);
+  const [progress, setProgress] = useState<LearningProgress[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const completedGuides: Guide[] = [
-    {
-      id: 1,
-      title: "Advanced Movement Techniques",
-      game: "Neon Nexus",
-      progress: 100,
-      category: "Mechanics",
-      icon: TrendingUp,
-    },
-    {
-      id: 2,
-      title: "Map Awareness Mastery",
-      game: "Stellar Conquest",
-      progress: 100,
-      category: "Strategy",
-      icon: BookOpen,
-    },
-    {
-      id: 3,
-      title: "Team Communication Guide",
-      game: "Realm of Legends",
-      progress: 100,
-      category: "Social",
-      icon: CheckCircle2,
-    },
-  ];
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const [guidesData, progressData] = await Promise.all([
+          Promise.resolve(getAllGuides()),
+          getLearningProgress(),
+        ]);
+        setGuides(guidesData);
+        setProgress(progressData);
+      } catch (error) {
+        console.error("Erreur lors du chargement:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchData();
+  }, []);
 
-  const inProgressGuides: Guide[] = [
-    {
-      id: 4,
-      title: "Precision Aiming Drills",
-      game: "Neon Nexus",
-      progress: 75,
-      category: "Mechanics",
-      icon: TrendingUp,
-    },
-    {
-      id: 5,
-      title: "Economy Management",
-      game: "Stellar Conquest",
-      progress: 45,
-      category: "Strategy",
-      icon: BookOpen,
-    },
-    {
-      id: 6,
-      title: "Support Role Fundamentals",
-      game: "Realm of Legends",
-      progress: 20,
-      category: "Tactics",
-      icon: Clock,
-    },
-  ];
+  if (loading) {
+    return (
+      <Card glow glowColor="#00D1FF" className="p-6">
+        <div className="flex items-center justify-center h-48">
+          <Loader2 className="w-8 h-8 animate-spin text-[#00D1FF]" />
+        </div>
+      </Card>
+    );
+  }
 
-  const guides = activeTab === "completed" ? completedGuides : inProgressGuides;
+  const completedGuides = guides.filter((g) => g.progress === 100);
+  const inProgressGuides = guides.filter((g) => g.progress > 0 && g.progress < 100);
+
+  const displayGuides = activeTab === "completed" ? completedGuides : inProgressGuides;
+
+  const getIcon = (category: string) => {
+    switch (category) {
+      case "Mécanique":
+        return TrendingUp;
+      case "Stratégie":
+        return BookOpen;
+      case "Social":
+        return CheckCircle2;
+      default:
+        return Clock;
+    }
+  };
 
   return (
-    <div className="rounded-2xl bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 p-6 backdrop-blur-xl relative overflow-hidden">
-      {/* Top Glow */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00D1FF] to-transparent" />
-
+    <Card glow glowColor="#00D1FF" className="p-6">
       <div>
-        <h2 className="text-xl font-semibold mb-6">Learning Tracker</h2>
+        <SectionHeader title="Suivi d'apprentissage" />
 
-        {/* Tabs */}
-        <div className="flex gap-2 mb-6 p-1 bg-white/5 rounded-xl border border-white/10">
+        {/* Résumé par catégorie */}
+        <div className="grid grid-cols-2 gap-2 mt-4 mb-4">
+          {progress.map((cat) => (
+            <div
+              key={cat.category}
+              className="p-3 rounded-xl bg-white/5 border border-white/10"
+            >
+              <div className="flex items-center justify-between mb-1">
+                <span className="text-xs text-white/60">{cat.category}</span>
+                <span className="text-xs font-medium" style={{ color: cat.color }}>
+                  {cat.completedLessons}/{cat.totalLessons}
+                </span>
+              </div>
+              <ProgressBar value={cat.progress} color={cat.color} size="sm" />
+            </div>
+          ))}
+        </div>
+
+        {/* Onglets */}
+        <div className="flex gap-2 my-4 p-1 bg-white/5 rounded-xl border border-white/10">
           <button
             onClick={() => setActiveTab("inProgress")}
             className={`
@@ -95,7 +95,7 @@ export function LearningTracker() {
               }
             `}
           >
-            In Progress
+            En cours ({inProgressGuides.length})
           </button>
           <button
             onClick={() => setActiveTab("completed")}
@@ -108,85 +108,77 @@ export function LearningTracker() {
               }
             `}
           >
-            Completed
+            Terminés ({completedGuides.length})
           </button>
         </div>
 
-        {/* Guide Cards */}
-        <div className="space-y-3 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
-          {guides.map((guide) => {
-            const Icon = guide.icon;
-            const remainingProgress = 100 - guide.progress;
+        {/* Cartes de guides */}
+        <div className="space-y-3 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
+          {displayGuides.length === 0 ? (
+            <div className="text-center py-8 text-white/40">
+              {activeTab === "completed"
+                ? "Aucun guide terminé"
+                : "Aucun guide en cours"}
+            </div>
+          ) : (
+            displayGuides.map((guide) => {
+              const Icon = getIcon(guide.category);
 
-            return (
-              <div
-                key={guide.id}
-                className="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-[#00D1FF]/30 hover:bg-white/10 transition-all duration-300 cursor-pointer group"
-              >
-                <div className="flex items-start gap-3">
-                  {/* Icon */}
-                  <div
-                    className={`
-                    w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0
-                    ${
-                      guide.progress === 100
-                        ? "bg-[#10B981]/20 text-[#10B981]"
-                        : "bg-[#00D1FF]/10 text-[#00D1FF]"
-                    }
-                  `}
-                  >
-                    {guide.progress === 100 ? (
-                      <CheckCircle2 className="w-5 h-5" />
-                    ) : (
-                      <Icon className="w-5 h-5" />
-                    )}
-                  </div>
+              return (
+                <Link
+                  href={`/app/guides/${guide.id}`}
+                  key={guide.id}
+                  className="block p-4 rounded-xl bg-white/5 border border-white/10 hover:border-[#00D1FF]/30 hover:bg-white/10 transition-all duration-300 cursor-pointer group"
+                >
+                  <div className="flex items-start gap-3">
+                    {/* Icône */}
+                    <div
+                      className={`
+                      w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0
+                      ${
+                        guide.progress === 100
+                          ? "bg-[#10B981]/20 text-[#10B981]"
+                          : "bg-[#00D1FF]/10 text-[#00D1FF]"
+                      }
+                    `}
+                    >
+                      {guide.progress === 100 ? (
+                        <CheckCircle2 className="w-5 h-5" />
+                      ) : (
+                        <Icon className="w-5 h-5" />
+                      )}
+                    </div>
 
-                  {/* Content */}
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-semibold mb-1 group-hover:text-[#00D1FF] transition-colors">
-                      {guide.title}
-                    </h3>
-                    <p className="text-xs text-white/50 mb-2">
-                      {guide.game} • {guide.category}
-                    </p>
+                    {/* Contenu */}
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-semibold mb-1 group-hover:text-[#00D1FF] transition-colors">
+                        {guide.title}
+                      </h3>
+                      <p className="text-xs text-white/50 mb-2">
+                        {guide.game} • {guide.category}
+                      </p>
 
-                    {/* Progress Bar */}
-                    <div className="space-y-1">
-                      <div className="flex items-center justify-between text-xs">
-                        <span className="text-white/60">
-                          {guide.progress === 100
-                            ? "Completed"
-                            : `${remainingProgress}% remaining`}
-                        </span>
-                        <span
-                          className={`font-semibold ${
-                            guide.progress === 100
-                              ? "text-[#10B981]"
-                              : "text-[#00D1FF]"
-                          }`}
-                        >
-                          {guide.progress}%
-                        </span>
-                      </div>
-                      <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
-                        <div
-                          className={`h-full rounded-full transition-all duration-500 ${
-                            guide.progress === 100
-                              ? "bg-gradient-to-r from-[#10B981] to-[#10B981]/60 shadow-lg shadow-[#10B981]/30"
-                              : "bg-gradient-to-r from-[#00D1FF] to-[#00D1FF]/60 shadow-lg shadow-[#00D1FF]/30"
-                          }`}
-                          style={{ width: `${guide.progress}%` }}
-                        />
+                      {/* Barre de progression */}
+                      <ProgressBar
+                        value={guide.progress}
+                        color={guide.progress === 100 ? "#10B981" : "#00D1FF"}
+                        size="sm"
+                      />
+                    </div>
+
+                    {/* Bouton action */}
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity">
+                      <div className="w-8 h-8 rounded-lg bg-[#00D1FF]/20 flex items-center justify-center">
+                        <Play className="w-4 h-4 text-[#00D1FF]" />
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            );
-          })}
+                </Link>
+              );
+            })
+          )}
         </div>
       </div>
-    </div>
+    </Card>
   );
 }

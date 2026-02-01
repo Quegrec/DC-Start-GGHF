@@ -1,54 +1,101 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Settings, RotateCcw, Crown } from "lucide-react";
+import Link from "next/link";
+import { Settings, RotateCcw, Crown, Loader2 } from "lucide-react";
+import { Card, ProgressBar } from "@/components/common";
+import { getCurrentUser, type UserProfile } from "@/data/user";
 
 export function ProfileHeader() {
-  const level = 42;
-  const currentXP = 7350;
-  const nextLevelXP = 10000;
-  const xpProgress = (currentXP / nextLevelXP) * 100;
+  const [user, setUser] = useState<UserProfile | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchUser() {
+      try {
+        const userData = await getCurrentUser();
+        setUser(userData);
+      } catch (error) {
+        console.error("Erreur lors du chargement du profil:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchUser();
+  }, []);
+
+  if (loading) {
+    return (
+      <Card glow glowColor="#00D1FF" className="p-8">
+        <div className="flex items-center justify-center h-32">
+          <Loader2 className="w-8 h-8 animate-spin text-[#00D1FF]" />
+        </div>
+      </Card>
+    );
+  }
+
+  if (!user) {
+    return (
+      <Card glow glowColor="#00D1FF" className="p-8">
+        <div className="text-center text-white/60">
+          Impossible de charger le profil
+        </div>
+      </Card>
+    );
+  }
+
+  const xpProgress = (user.xp / user.xpToNextLevel) * 100;
 
   return (
-    <div className="rounded-2xl bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 p-8 backdrop-blur-xl relative overflow-hidden">
-      {/* Top Glow */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00D1FF] to-transparent" />
-
+    <Card glow glowColor="#00D1FF" className="p-8">
       <div className="flex items-start gap-8">
         {/* Avatar */}
         <div className="relative flex-shrink-0">
           <div className="w-32 h-32 rounded-2xl overflow-hidden border-2 border-[#00D1FF]/30 shadow-lg shadow-[#00D1FF]/20 relative">
             <Image
-              src="https://images.unsplash.com/photo-1656229181541-a42184b5625c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnYW1lciUyMGF2YXRhciUyMHBvcnRyYWl0JTIwaGVhZHNldHxlbnwxfHx8fDE3Njk5MjU4NzB8MA&ixlib=rb-4.1.0&q=80&w=1080"
-              alt="User Avatar"
+              src={user.avatar}
+              alt={`Avatar de ${user.username}`}
               fill
               className="object-cover"
             />
           </div>
 
-          {/* Level Badge */}
+          {/* Badge de niveau */}
           <div className="absolute -bottom-2 -right-2 w-12 h-12 rounded-xl bg-gradient-to-br from-[#00D1FF] to-[#00D1FF]/60 flex items-center justify-center border-2 border-[#121212] shadow-lg shadow-[#00D1FF]/40">
             <div className="text-center">
               <Crown className="w-4 h-4 mx-auto mb-0.5" />
-              <span className="text-xs font-bold">{level}</span>
+              <span className="text-xs font-bold">{user.level}</span>
             </div>
           </div>
         </div>
 
-        {/* User Info & XP Progress */}
+        {/* Informations utilisateur & Progression XP */}
         <div className="flex-1">
           <div className="flex items-start justify-between mb-4">
             <div>
-              <h1 className="text-3xl font-semibold mb-1">ShadowStriker</h1>
-              <p className="text-white/60">Medic Archetype • Member since 2024</p>
+              <h1 className="text-3xl font-semibold mb-1">{user.username}</h1>
+              <p className="text-white/60">
+                {user.archetype ? (
+                  <>
+                    Archétype {user.archetype.icon} {user.archetype.name} • Membre depuis{" "}
+                    {new Date(user.joinedAt).getFullYear()}
+                  </>
+                ) : (
+                  <>Archétype non défini • Membre depuis {new Date(user.joinedAt).getFullYear()}</>
+                )}
+              </p>
             </div>
 
-            {/* Action Buttons */}
+            {/* Boutons d'action */}
             <div className="flex items-center gap-3">
-              <button className="px-5 py-2.5 rounded-2xl bg-gradient-to-r from-[#00D1FF]/20 to-[#00D1FF]/10 border border-[#00D1FF]/30 text-[#00D1FF] hover:from-[#00D1FF]/30 hover:to-[#00D1FF]/20 hover:shadow-lg hover:shadow-[#00D1FF]/20 transition-all duration-300 flex items-center gap-2">
+              <Link
+                href="/app/quiz"
+                className="px-5 py-2.5 rounded-2xl bg-gradient-to-r from-[#00D1FF]/20 to-[#00D1FF]/10 border border-[#00D1FF]/30 text-[#00D1FF] hover:from-[#00D1FF]/30 hover:to-[#00D1FF]/20 hover:shadow-lg hover:shadow-[#00D1FF]/20 transition-all duration-300 flex items-center gap-2"
+              >
                 <RotateCcw className="w-4 h-4" />
-                <span>Retake Quiz</span>
-              </button>
+                <span>Refaire le test</span>
+              </Link>
 
               <button className="w-11 h-11 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 hover:border-[#00D1FF]/50 transition-all duration-300">
                 <Settings className="w-5 h-5 text-white/60" />
@@ -56,34 +103,24 @@ export function ProfileHeader() {
             </div>
           </div>
 
-          {/* XP Progress Bar */}
+          {/* Barre de progression XP */}
           <div className="space-y-2">
             <div className="flex items-center justify-between text-sm">
-              <span className="text-white/70">Level {level} Progress</span>
+              <span className="text-white/70">Progression niveau {user.level}</span>
               <span className="text-[#00D1FF] font-semibold">
-                {currentXP.toLocaleString()} / {nextLevelXP.toLocaleString()} XP
+                {user.xp.toLocaleString("fr-FR")} / {user.xpToNextLevel.toLocaleString("fr-FR")} XP
               </span>
             </div>
 
-            <div className="relative h-3 bg-white/10 rounded-full overflow-hidden">
-              <div
-                className="absolute inset-y-0 left-0 bg-gradient-to-r from-[#00D1FF] to-[#00D1FF]/60 rounded-full transition-all duration-500 shadow-lg shadow-[#00D1FF]/30"
-                style={{ width: `${xpProgress}%` }}
-              />
-
-              {/* Glow Effect */}
-              <div
-                className="absolute inset-y-0 left-0 bg-gradient-to-r from-transparent to-[#00D1FF]/40 rounded-full blur-sm"
-                style={{ width: `${xpProgress}%` }}
-              />
-            </div>
+            <ProgressBar value={xpProgress} showLabel={false} size="lg" />
 
             <p className="text-xs text-white/50">
-              {(nextLevelXP - currentXP).toLocaleString()} XP to Level {level + 1}
+              {(user.xpToNextLevel - user.xp).toLocaleString("fr-FR")} XP pour atteindre le niveau{" "}
+              {user.level + 1}
             </p>
           </div>
         </div>
       </div>
-    </div>
+    </Card>
   );
 }

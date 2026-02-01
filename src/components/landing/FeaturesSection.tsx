@@ -93,10 +93,10 @@ export function FeaturesSection() {
                 <div className="absolute inset-0 rounded-3xl border border-white/10 group-hover:border-white/20 transition-colors" />
 
                 {/* Content */}
-                <div className="relative p-8">
-                  {/* Badge */}
+                <div className="relative p-6 md:p-8">
+                  {/* Badge - visible uniquement sur desktop */}
                   <div
-                    className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-6"
+                    className="hidden md:inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-6"
                     style={{
                       backgroundColor: `${feature.color}15`,
                       color: feature.color,
@@ -105,20 +105,34 @@ export function FeaturesSection() {
                     {feature.badge}
                   </div>
 
-                  {/* Icon */}
-                  <div
-                    className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-110"
-                    style={{
-                      backgroundColor: `${feature.color}15`,
-                      border: `1px solid ${feature.color}30`,
-                    }}
-                  >
-                    <Icon className="w-7 h-7" style={{ color: feature.color }} />
+                  {/* Mobile: Icône + Titre alignés */}
+                  <div className="flex items-center gap-4 mb-4 md:mb-0 md:flex-col md:items-start">
+                    {/* Icon */}
+                    <div
+                      className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-110 md:mb-6"
+                      style={{
+                        backgroundColor: `${feature.color}15`,
+                        border: `1px solid ${feature.color}30`,
+                      }}
+                    >
+                      <Icon className="w-6 h-6 md:w-7 md:h-7" style={{ color: feature.color }} />
+                    </div>
+
+                    {/* Title - À côté de l'icône sur mobile */}
+                    <div className="flex-1 md:flex-none">
+                      <h3 className="text-lg md:text-xl font-semibold">{feature.title}</h3>
+                      {/* Badge mobile sous le titre */}
+                      <span
+                        className="inline-flex md:hidden text-xs font-medium mt-1"
+                        style={{ color: feature.color }}
+                      >
+                        {feature.badge}
+                      </span>
+                    </div>
                   </div>
 
-                  {/* Text */}
-                  <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
-                  <p className="text-white/50 leading-relaxed">
+                  {/* Description */}
+                  <p className="text-white/50 leading-relaxed text-sm md:text-base">
                     {feature.description}
                   </p>
                 </div>
@@ -127,21 +141,21 @@ export function FeaturesSection() {
           })}
         </div>
 
-        {/* Secondary features */}
-        <div className="grid md:grid-cols-3 gap-6">
+        {/* Secondary features - déjà bien alignées */}
+        <div className="grid md:grid-cols-3 gap-4 md:gap-6">
           {secondaryFeatures.map((feature, index) => {
             const Icon = feature.icon;
             return (
               <div
                 key={index}
-                className="flex items-start gap-4 p-6 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/10 transition-colors"
+                className="flex items-center md:items-start gap-4 p-5 md:p-6 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/10 transition-colors"
               >
-                <div className="w-10 h-10 rounded-xl bg-[#00D1FF]/10 flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-[#00D1FF]/10 flex items-center justify-center shrink-0">
                   <Icon className="w-5 h-5 text-[#00D1FF]" />
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-1">{feature.title}</h4>
-                  <p className="text-sm text-white/50">{feature.description}</p>
+                  <h4 className="font-semibold mb-0.5 md:mb-1">{feature.title}</h4>
+                  <p className="text-sm text-white/50 hidden md:block">{feature.description}</p>
                 </div>
               </div>
             );

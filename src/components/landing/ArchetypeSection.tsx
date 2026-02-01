@@ -40,13 +40,13 @@ export function ArchetypeSection() {
 
       <div className="relative max-w-6xl mx-auto">
         {/* Section header */}
-        <div className="max-w-3xl mx-auto text-center mb-20">
+        <div className="max-w-3xl mx-auto text-center mb-16 md:mb-20">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#00D1FF]/10 border border-[#00D1FF]/20 mb-6">
             <Brain className="w-4 h-4 text-[#00D1FF]" />
             <span className="text-sm text-[#00D1FF]">La Solution</span>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold mb-6">
             Une analyse{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00D1FF] to-[#00D1FF]/70">
               psychologique
@@ -54,7 +54,7 @@ export function ArchetypeSection() {
             , pas technique
           </h2>
 
-          <p className="text-xl text-white/50 leading-relaxed">
+          <p className="text-lg md:text-xl text-white/50 leading-relaxed">
             Notre algorithme ne se contente pas de regarder votre précision. Il
             évalue votre <span className="text-[#00D1FF]">Empathie</span>, votre{" "}
             <span className="text-[#10B981]">Résilience</span> et votre{" "}
@@ -64,13 +64,13 @@ export function ArchetypeSection() {
         </div>
 
         {/* Archetype cards */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
+        <div className="grid md:grid-cols-3 gap-4 md:gap-8 mb-12 md:mb-16">
           {archetypes.map((archetype, index) => {
             const Icon = archetype.icon;
             return (
               <div
                 key={index}
-                className="group relative p-8 rounded-3xl bg-gradient-to-b from-white/[0.05] to-white/[0.02] border border-white/10 hover:border-white/20 transition-all duration-500 overflow-hidden"
+                className="group relative p-5 md:p-8 rounded-2xl md:rounded-3xl bg-gradient-to-b from-white/[0.05] to-white/[0.02] border border-white/10 hover:border-white/20 transition-all duration-500 overflow-hidden"
               >
                 {/* Glow effect */}
                 <div
@@ -80,33 +80,38 @@ export function ArchetypeSection() {
                   }}
                 />
 
-                {/* Icon */}
-                <div
-                  className="relative w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300"
-                  style={{
-                    backgroundColor: `${archetype.color}15`,
-                    border: `1px solid ${archetype.color}30`,
-                  }}
-                >
-                  <Icon
-                    className="w-8 h-8 transition-transform group-hover:scale-110"
-                    style={{ color: archetype.color }}
-                  />
-                </div>
+                {/* Mobile: Layout horizontal */}
+                <div className="relative flex items-start gap-4 md:block">
+                  {/* Icon */}
+                  <div
+                    className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-110 md:mb-6"
+                    style={{
+                      backgroundColor: `${archetype.color}15`,
+                      border: `1px solid ${archetype.color}30`,
+                    }}
+                  >
+                    <Icon
+                      className="w-6 h-6 md:w-8 md:h-8"
+                      style={{ color: archetype.color }}
+                    />
+                  </div>
 
-                {/* Content */}
-                <h3 className="relative text-2xl font-bold mb-2">
-                  {archetype.name}
-                </h3>
-                <p
-                  className="text-sm font-medium mb-4"
-                  style={{ color: archetype.color }}
-                >
-                  {archetype.trait}
-                </p>
-                <p className="relative text-white/50 leading-relaxed">
-                  {archetype.description}
-                </p>
+                  {/* Content */}
+                  <div className="flex-1">
+                    <h3 className="text-xl md:text-2xl font-bold mb-1 md:mb-2">
+                      {archetype.name}
+                    </h3>
+                    <p
+                      className="text-xs md:text-sm font-medium mb-2 md:mb-4"
+                      style={{ color: archetype.color }}
+                    >
+                      {archetype.trait}
+                    </p>
+                    <p className="text-sm md:text-base text-white/50 leading-relaxed">
+                      {archetype.description}
+                    </p>
+                  </div>
+                </div>
 
                 {/* Bottom accent */}
                 <div
@@ -122,16 +127,16 @@ export function ArchetypeSection() {
 
         {/* Secret callout */}
         <div className="relative max-w-3xl mx-auto">
-          <div className="p-8 rounded-3xl bg-gradient-to-r from-[#00D1FF]/10 via-[#00D1FF]/5 to-[#00D1FF]/10 border border-[#00D1FF]/20 backdrop-blur-sm">
+          <div className="p-6 md:p-8 rounded-2xl md:rounded-3xl bg-gradient-to-r from-[#00D1FF]/10 via-[#00D1FF]/5 to-[#00D1FF]/10 border border-[#00D1FF]/20 backdrop-blur-sm">
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-xl bg-[#00D1FF]/20 flex items-center justify-center flex-shrink-0">
-                <Sparkles className="w-6 h-6 text-[#00D1FF]" />
+              <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-[#00D1FF]/20 flex items-center justify-center shrink-0">
+                <Sparkles className="w-5 h-5 md:w-6 md:h-6 text-[#00D1FF]" />
               </div>
               <div>
-                <h4 className="text-lg font-semibold text-[#00D1FF] mb-2">
+                <h4 className="text-base md:text-lg font-semibold text-[#00D1FF] mb-2">
                   Le secret
                 </h4>
-                <p className="text-white/70 leading-relaxed">
+                <p className="text-sm md:text-base text-white/70 leading-relaxed">
                   Vos traits de caractère définissent votre style de jeu. Nous
                   les révélons pour vous orienter vers les classes et les titres
                   où vous{" "}
@@ -146,10 +151,10 @@ export function ArchetypeSection() {
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-12">
+        <div className="text-center mt-10 md:mt-12">
           <Link
-            href="/app"
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-[#00D1FF] text-black font-semibold text-lg hover:shadow-2xl hover:shadow-[#00D1FF]/25 transition-all duration-300"
+            href="/app/quiz"
+            className="inline-flex items-center gap-3 px-6 md:px-8 py-3 md:py-4 rounded-full md:rounded-2xl bg-[#00D1FF] text-black font-semibold text-base md:text-lg hover:shadow-2xl hover:shadow-[#00D1FF]/25 transition-all duration-300"
           >
             Découvrir mon Archétype
             <span className="text-[#00D1FF]/60 bg-black/20 px-2 py-0.5 rounded text-sm">

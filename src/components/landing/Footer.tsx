@@ -2,18 +2,20 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="relative py-16 px-6 border-t border-white/5">
+    <footer className="relative py-16 px-6 border-t border-white/[0.08]">
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
-          {/* Brand */}
+          {/* Brand - Logo harmonisé */}
           <div className="md:col-span-2">
-            <Link href="/" className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#00D1FF] to-[#00D1FF]/50 flex items-center justify-center">
-                <span className="font-bold text-sm">GG</span>
+            <Link href="/" className="group flex items-center mb-4">
+              <div className="relative flex items-center">
+                <div className="w-10 h-10 rounded-xl bg-[#00D1FF] flex items-center justify-center shadow-lg shadow-[#00D1FF]/30 group-hover:shadow-[#00D1FF]/50 transition-all duration-300">
+                  <span className="font-black text-base text-black tracking-tight">GG</span>
+                </div>
+                <span className="ml-1.5 text-lg font-bold text-white/90 tracking-tight">
+                  HF<span className="text-[#00D1FF]">.</span>
+                </span>
               </div>
-              <span className="text-xl font-semibold">
-                GGHF<span className="text-[#00D1FF]">.</span>
-              </span>
             </Link>
             <p className="text-white/40 max-w-sm leading-relaxed">
               Le premier compagnon intelligent qui décode votre ADN de joueur
@@ -66,7 +68,7 @@ export function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="pt-8 border-t border-white/[0.08] flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-white/30">
             © 2024 GGHF. Tous droits réservés.
           </p>
