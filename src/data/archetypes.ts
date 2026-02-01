@@ -177,13 +177,13 @@ const archetypes: Archetype[] = [
   },
 ];
 
-// Questions du quiz - universelles, tous types de joueurs
+// Questions du quiz - universelles, tous types de joueurs (12 questions pour 6 archétypes)
 const quizQuestions: QuizQuestion[] = [
   {
     id: 1,
     text: "Vous lancez un nouveau jeu pour la première fois. Quelle est votre priorité ?",
     context: "Découverte d'un nouveau jeu",
-    image: "https://images.unsplash.com/photo-1493711662062-fa541f7f3d24?w=800&h=400&fit=crop",
+    image: "https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop",
     options: [
       {
         id: "1a",
@@ -211,7 +211,7 @@ const quizQuestions: QuizQuestion[] = [
     id: 2,
     text: "Dans un jeu multijoueur, quel rôle vous attire naturellement ?",
     context: "Dynamique de groupe",
-    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&h=400&fit=crop",
+    image: "https://images.pexels.com/photos/7915357/pexels-photo-7915357.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop",
     options: [
       {
         id: "2a",
@@ -239,7 +239,7 @@ const quizQuestions: QuizQuestion[] = [
     id: 3,
     text: "Vous êtes bloqué sur un puzzle ou un boss difficile. Que faites-vous ?",
     context: "Face à un défi",
-    image: "https://images.unsplash.com/photo-1552820728-8b83bb6b0b0a?w=800&h=400&fit=crop",
+    image: "https://images.pexels.com/photos/4009599/pexels-photo-4009599.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop",
     options: [
       {
         id: "3a",
@@ -267,7 +267,7 @@ const quizQuestions: QuizQuestion[] = [
     id: 4,
     text: "Quel type de contenu vous donne le plus envie de continuer un jeu ?",
     context: "Motivation à long terme",
-    image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&h=400&fit=crop",
+    image: "https://images.pexels.com/photos/3945683/pexels-photo-3945683.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop",
     options: [
       {
         id: "4a",
@@ -295,7 +295,7 @@ const quizQuestions: QuizQuestion[] = [
     id: 5,
     text: "Un nouveau joueur rejoint votre partie et ne comprend pas les mécaniques. Votre réaction ?",
     context: "Intégration des nouveaux",
-    image: "https://images.unsplash.com/photo-1493711662062-fa541f7f3d24?w=800&h=400&fit=crop",
+    image: "https://images.pexels.com/photos/7862657/pexels-photo-7862657.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop",
     options: [
       {
         id: "5a",
@@ -323,7 +323,7 @@ const quizQuestions: QuizQuestion[] = [
     id: 6,
     text: "Quel aspect d'un jeu open world vous attire le plus ?",
     context: "Préférences de gameplay",
-    image: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800&h=400&fit=crop",
+    image: "https://images.pexels.com/photos/1293261/pexels-photo-1293261.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop",
     options: [
       {
         id: "6a",
@@ -351,7 +351,7 @@ const quizQuestions: QuizQuestion[] = [
     id: 7,
     text: "Comment réagissez-vous après une défaite ou un échec en jeu ?",
     context: "Gestion de la frustration",
-    image: "https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?w=800&h=400&fit=crop",
+    image: "https://images.pexels.com/photos/4842498/pexels-photo-4842498.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop",
     options: [
       {
         id: "7a",
@@ -377,27 +377,139 @@ const quizQuestions: QuizQuestion[] = [
   },
   {
     id: 8,
-    text: "Si vous deviez choisir un seul type de jeu pour le reste de votre vie, ce serait ?",
-    context: "Préférence fondamentale",
-    image: "https://images.unsplash.com/photo-1542751110-97427bbecf20?w=800&h=400&fit=crop",
+    text: "Vous découvrez un PNJ avec une histoire tragique. Votre réaction ?",
+    context: "Empathie narrative",
+    image: "https://images.pexels.com/photos/4009402/pexels-photo-4009402.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop",
     options: [
       {
         id: "8a",
+        text: "Je suis touché et je veux l'aider à tout prix",
+        traits: { storyteller: 3, guardian: 2 },
+      },
+      {
+        id: "8b",
+        text: "Je note l'info pour comprendre le lore global",
+        traits: { explorer: 3, architect: 1 },
+      },
+      {
+        id: "8c",
+        text: "Je partage cette découverte avec mes amis",
+        traits: { socializer: 4 },
+      },
+      {
+        id: "8d",
+        text: "Je passe vite pour continuer ma quête principale",
+        traits: { challenger: 3 },
+      },
+    ],
+  },
+  {
+    id: 9,
+    text: "Dans Minecraft ou un jeu similaire, que faites-vous en premier ?",
+    context: "Sandbox & Créativité",
+    image: "https://images.pexels.com/photos/1174746/pexels-photo-1174746.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop",
+    options: [
+      {
+        id: "9a",
+        text: "Je construis une base élaborée et fonctionnelle",
+        traits: { architect: 4 },
+      },
+      {
+        id: "9b",
+        text: "Je pars explorer les grottes et biomes lointains",
+        traits: { explorer: 4 },
+      },
+      {
+        id: "9c",
+        text: "Je rejoins un serveur multijoueur pour jouer avec d'autres",
+        traits: { socializer: 4 },
+      },
+      {
+        id: "9d",
+        text: "Je cherche les meilleurs équipements et défis (Ender Dragon, etc.)",
+        traits: { challenger: 4 },
+      },
+    ],
+  },
+  {
+    id: 10,
+    text: "Lors d'un raid ou donjon en groupe, qu'est-ce qui vous satisfait le plus ?",
+    context: "Accomplissement en équipe",
+    image: "https://images.pexels.com/photos/7915286/pexels-photo-7915286.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop",
+    options: [
+      {
+        id: "10a",
+        text: "Avoir gardé tout le monde en vie",
+        traits: { guardian: 4 },
+      },
+      {
+        id: "10b",
+        text: "Avoir fait le meilleur score de dégâts",
+        traits: { challenger: 4 },
+      },
+      {
+        id: "10c",
+        text: "Avoir découvert tous les secrets du donjon",
+        traits: { explorer: 3, storyteller: 1 },
+      },
+      {
+        id: "10d",
+        text: "Le moment de rigolade avec l'équipe",
+        traits: { socializer: 4 },
+      },
+    ],
+  },
+  {
+    id: 11,
+    text: "Quel jeu vous attire le plus spontanément ?",
+    context: "Préférences de genre",
+    image: "https://images.pexels.com/photos/3945657/pexels-photo-3945657.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop",
+    options: [
+      {
+        id: "11a",
+        text: "Stardew Valley / Animal Crossing - Détente et gestion paisible",
+        traits: { guardian: 2, architect: 2 },
+      },
+      {
+        id: "11b",
+        text: "Zelda / Horizon - Exploration et aventure",
+        traits: { explorer: 3, storyteller: 1 },
+      },
+      {
+        id: "11c",
+        text: "Dark Souls / Elden Ring - Défi et maîtrise",
+        traits: { challenger: 4 },
+      },
+      {
+        id: "11d",
+        text: "Among Us / It Takes Two - Jeux à partager",
+        traits: { socializer: 4 },
+      },
+    ],
+  },
+  {
+    id: 12,
+    text: "Si vous deviez choisir un seul type de jeu pour le reste de votre vie, ce serait ?",
+    context: "Préférence fondamentale",
+    image: "https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop",
+    options: [
+      {
+        id: "12a",
         text: "Un jeu d'aventure/exploration avec un monde immense",
         traits: { explorer: 4 },
       },
       {
-        id: "8b",
+        id: "12b",
         text: "Un jeu de construction/gestion avec des possibilités infinies",
         traits: { architect: 4 },
       },
       {
-        id: "8c",
+        id: "12c",
         text: "Un jeu narratif avec des choix qui impactent l'histoire",
         traits: { storyteller: 4 },
       },
       {
-        id: "8d",
+        id: "12d",
         text: "Un jeu multijoueur où je peux jouer avec mes amis",
         traits: { socializer: 3, guardian: 1 },
       },

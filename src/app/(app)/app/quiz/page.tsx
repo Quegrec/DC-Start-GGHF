@@ -146,7 +146,7 @@ export default function QuizPage() {
                 <p className="text-sm text-white/50">Durée</p>
               </div>
               <div className="p-4 rounded-xl bg-white/5 border border-white/10">
-                <p className="text-2xl font-bold text-[#8B5CF6]">5</p>
+                <p className="text-2xl font-bold text-[#8B5CF6]">6</p>
                 <p className="text-sm text-white/50">Archétypes</p>
               </div>
               <div className="p-4 rounded-xl bg-white/5 border border-white/10">
