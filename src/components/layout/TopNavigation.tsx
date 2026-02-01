@@ -1,47 +1,51 @@
-import { Search, RotateCcw, User } from 'lucide-react';
+"use client";
 
-interface TopNavigationProps {
-  onViewChange: (view: 'dashboard' | 'profile') => void;
-  currentView: 'dashboard' | 'profile';
-}
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Search, RotateCcw, User } from "lucide-react";
 
-export function TopNavigation({ onViewChange, currentView }: TopNavigationProps) {
+export function TopNavigation() {
+  const pathname = usePathname();
+
+  const isProfile = pathname === "/profile";
+  const isDashboard = pathname === "/";
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#121212]/70 backdrop-blur-xl border-b border-white/10">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-6">
         {/* Logo */}
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-[#00D1FF] to-[#00D1FF]/50 flex items-center justify-center shadow-lg shadow-[#00D1FF]/30 cursor-pointer" onClick={() => onViewChange('dashboard')}>
+        <Link href="/" className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-[#00D1FF] to-[#00D1FF]/50 flex items-center justify-center shadow-lg shadow-[#00D1FF]/30 cursor-pointer">
             <span className="font-bold">GG</span>
           </div>
-          <span className="text-xl font-semibold cursor-pointer" onClick={() => onViewChange('dashboard')}>GGHF</span>
-        </div>
-        
+          <span className="text-xl font-semibold cursor-pointer">GGHF</span>
+        </Link>
+
         {/* Navigation Links */}
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() => onViewChange('dashboard')}
+        <nav className="flex items-center gap-2">
+          <Link
+            href="/"
             className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
-              currentView === 'dashboard'
-                ? 'bg-[#00D1FF]/20 text-[#00D1FF] border border-[#00D1FF]/30'
-                : 'text-white/60 hover:text-white hover:bg-white/5'
+              isDashboard
+                ? "bg-[#00D1FF]/20 text-[#00D1FF] border border-[#00D1FF]/30"
+                : "text-white/60 hover:text-white hover:bg-white/5"
             }`}
           >
             Dashboard
-          </button>
-          <button
-            onClick={() => onViewChange('profile')}
+          </Link>
+          <Link
+            href="/profile"
             className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
-              currentView === 'profile'
-                ? 'bg-[#00D1FF]/20 text-[#00D1FF] border border-[#00D1FF]/30'
-                : 'text-white/60 hover:text-white hover:bg-white/5'
+              isProfile
+                ? "bg-[#00D1FF]/20 text-[#00D1FF] border border-[#00D1FF]/30"
+                : "text-white/60 hover:text-white hover:bg-white/5"
             }`}
           >
             <User className="w-4 h-4" />
             Profile
-          </button>
-        </div>
-        
+          </Link>
+        </nav>
+
         {/* Search Bar */}
         <div className="flex-1 max-w-2xl">
           <div className="relative group">
@@ -59,7 +63,7 @@ export function TopNavigation({ onViewChange, currentView }: TopNavigationProps)
             />
           </div>
         </div>
-        
+
         {/* Retake Quiz Button */}
         <button className="px-5 py-2.5 rounded-2xl bg-gradient-to-r from-[#00D1FF]/20 to-[#00D1FF]/10 border border-[#00D1FF]/30 text-[#00D1FF] hover:from-[#00D1FF]/30 hover:to-[#00D1FF]/20 hover:shadow-lg hover:shadow-[#00D1FF]/20 transition-all duration-300 flex items-center gap-2">
           <RotateCcw className="w-4 h-4" />
