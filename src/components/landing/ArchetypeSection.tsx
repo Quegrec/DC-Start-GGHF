@@ -1,38 +1,38 @@
 "use client";
 
-import { Heart, Crosshair, Zap, Brain, Sparkles } from "lucide-react";
+import { Shield, Compass, Hammer, Sword, BookOpen, Users, Sparkles, Brain } from "lucide-react";
 import Link from "next/link";
 
 export function ArchetypeSection() {
   const archetypes = [
     {
-      icon: Heart,
-      name: "Le Medic",
+      icon: Shield,
+      name: "Le Gardien",
       color: "#10B981",
-      trait: "Empathie & Esprit d'équipe",
+      trait: "Protection & Altruisme",
       description:
-        "Votre empathie et votre esprit d'équipe font de vous le pilier de la survie. Vous brillez dans les rôles de support.",
+        "Vous prenez soin des autres et créez des espaces sûrs. Que ce soit en soignant, guidant ou protégeant, vous êtes le pilier de l'équipe.",
     },
     {
-      icon: Crosshair,
-      name: "Le Sniper",
-      color: "#00D1FF",
-      trait: "Perfectionnisme & Calme",
-      description:
-        "Votre perfectionnisme et votre calme olympien vous destinent à la précision absolue. Patience et timing sont vos armes.",
-    },
-    {
-      icon: Zap,
-      name: "L'Assassin",
+      icon: Compass,
+      name: "L'Explorateur",
       color: "#8B5CF6",
-      trait: "Réactivité & Audace",
+      trait: "Curiosité & Découverte",
       description:
-        "Votre réactivité et votre audace font de vous un prédateur de l'ombre. L'élément de surprise est votre allié.",
+        "Chaque recoin inexploré est une invitation. Secrets, easter eggs, lore caché... vous vivez pour le mystère et l'aventure.",
+    },
+    {
+      icon: Hammer,
+      name: "L'Architecte",
+      color: "#F59E0B",
+      trait: "Création & Planification",
+      description:
+        "Bâtir, optimiser, créer. Que ce soit des bases, des fermes automatisées ou des empires, vous transformez vos idées en réalités.",
     },
   ];
 
   return (
-    <section id="archetype" className="relative py-32 px-6">
+    <section id="archetype-test" className="relative py-32 px-6">
       {/* Background accent */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#00D1FF]/5 rounded-full blur-[150px]" />
@@ -43,23 +43,23 @@ export function ArchetypeSection() {
         <div className="max-w-3xl mx-auto text-center mb-16 md:mb-20">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#00D1FF]/10 border border-[#00D1FF]/20 mb-6">
             <Brain className="w-4 h-4 text-[#00D1FF]" />
-            <span className="text-sm text-[#00D1FF]">La Solution</span>
+            <span className="text-sm text-[#00D1FF]">Votre profil de joueur</span>
           </div>
 
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            Une analyse{" "}
+            Découvrez{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00D1FF] to-[#00D1FF]/70">
-              psychologique
-            </span>
-            , pas technique
+              qui vous êtes
+            </span>{" "}
+            vraiment en jeu
           </h2>
 
           <p className="text-lg md:text-xl text-white/50 leading-relaxed">
-            Notre algorithme ne se contente pas de regarder votre précision. Il
-            évalue votre <span className="text-[#00D1FF]">Empathie</span>, votre{" "}
-            <span className="text-[#10B981]">Résilience</span> et votre{" "}
-            <span className="text-[#8B5CF6]">Vision Stratégique</span> à travers
-            des mises en situation réelles.
+            Que vous soyez fan de <span className="text-[#00D1FF]">MMO</span>, de{" "}
+            <span className="text-[#10B981]">jeux solo narratifs</span>, de{" "}
+            <span className="text-[#8B5CF6]">construction</span> ou de{" "}
+            <span className="text-[#F59E0B]">compétition</span>, notre test révèle
+            votre véritable style de jeu.
           </p>
         </div>
 
@@ -125,6 +125,22 @@ export function ArchetypeSection() {
           })}
         </div>
 
+        {/* More archetypes teaser */}
+        <div className="flex justify-center gap-4 mb-12">
+          <div className="flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10">
+            <Sword className="w-4 h-4 text-[#EF4444]" />
+            <span className="text-sm text-white/60">Le Challenger</span>
+          </div>
+          <div className="flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10">
+            <BookOpen className="w-4 h-4 text-[#EC4899]" />
+            <span className="text-sm text-white/60">Le Conteur</span>
+          </div>
+          <div className="flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10">
+            <Users className="w-4 h-4 text-[#00D1FF]" />
+            <span className="text-sm text-white/60">Le Social</span>
+          </div>
+        </div>
+
         {/* Secret callout */}
         <div className="relative max-w-3xl mx-auto">
           <div className="p-6 md:p-8 rounded-2xl md:rounded-3xl bg-gradient-to-r from-[#00D1FF]/10 via-[#00D1FF]/5 to-[#00D1FF]/10 border border-[#00D1FF]/20 backdrop-blur-sm">
@@ -134,16 +150,15 @@ export function ArchetypeSection() {
               </div>
               <div>
                 <h4 className="text-base md:text-lg font-semibold text-[#00D1FF] mb-2">
-                  Le secret
+                  Pour tous les joueurs
                 </h4>
                 <p className="text-sm md:text-base text-white/70 leading-relaxed">
-                  Vos traits de caractère définissent votre style de jeu. Nous
-                  les révélons pour vous orienter vers les classes et les titres
-                  où vous{" "}
+                  RPG, survie, simulation, aventure, puzzle, action... Nos archétypes
+                  s&apos;adaptent à{" "}
                   <span className="text-white font-medium">
-                    excellerez naturellement
+                    tous les genres de jeux
                   </span>
-                  .
+                  . Pas besoin d&apos;être un pro pour trouver votre place.
                 </p>
               </div>
             </div>

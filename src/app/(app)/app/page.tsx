@@ -30,13 +30,14 @@ import { getArchetypeById, getArchetypesSync, type Archetype } from "@/data/arch
 import { getAllGuides, type Guide } from "@/data/guides";
 import { getGameRecommendations, type GameRecommendation } from "@/data/games";
 
-// Traits mesurables avec leurs affinités par archétype
+// Traits mesurables avec leurs affinités par archétype (universels, tous types de jeux)
 const traitAffinities: Record<string, Record<string, number>> = {
-  medic: { "Empathie": 95, "Esprit d'équipe": 90, "Patience": 85, "Réactivité": 60, "Précision": 50, "Leadership": 70 },
-  sniper: { "Empathie": 40, "Esprit d'équipe": 45, "Patience": 95, "Réactivité": 70, "Précision": 100, "Leadership": 55 },
-  assassin: { "Empathie": 35, "Esprit d'équipe": 40, "Patience": 30, "Réactivité": 100, "Précision": 80, "Leadership": 45 },
-  strategist: { "Empathie": 60, "Esprit d'équipe": 75, "Patience": 80, "Réactivité": 55, "Précision": 65, "Leadership": 100 },
-  explorer: { "Empathie": 65, "Esprit d'équipe": 60, "Patience": 50, "Réactivité": 70, "Précision": 55, "Leadership": 60 },
+  guardian: { "Empathie": 95, "Patience": 90, "Esprit d'équipe": 95, "Curiosité": 60, "Créativité": 70, "Compétition": 40 },
+  explorer: { "Empathie": 65, "Patience": 85, "Esprit d'équipe": 55, "Curiosité": 100, "Créativité": 80, "Compétition": 45 },
+  architect: { "Empathie": 55, "Patience": 95, "Esprit d'équipe": 60, "Curiosité": 75, "Créativité": 100, "Compétition": 50 },
+  challenger: { "Empathie": 40, "Patience": 60, "Esprit d'équipe": 55, "Curiosité": 50, "Créativité": 45, "Compétition": 100 },
+  storyteller: { "Empathie": 90, "Patience": 80, "Esprit d'équipe": 50, "Curiosité": 85, "Créativité": 90, "Compétition": 35 },
+  socializer: { "Empathie": 85, "Patience": 65, "Esprit d'équipe": 100, "Curiosité": 70, "Créativité": 60, "Compétition": 55 },
 };
 
 export default function DashboardPage() {
