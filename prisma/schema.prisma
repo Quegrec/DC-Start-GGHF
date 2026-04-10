@@ -1,0 +1,147 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum TrophyRarity {
+  common
+  rare
+  epic
+  legendary
+}
+
+model User {
+  id               String             @id @default(cuid())
+  username         String             @unique
+  email            String             @unique
+  passwordHash     String?
+  avatar           String?
+  level            Int                @default(1)
+  xp               Int                @default(0)
+  xpToNextLevel    Int                @default(100)
+  guidesCompleted  Int                @default(0)
+  gamesPlayed      Int                @default(0)
+  hoursPlayed      Int                @default(0)
+  archetypeId      String?
+  archetype        Archetype?         @relation(fields: [archetypeId], references: [id], onDelete: SetNull)
+  stats            UserStats?
+  trophies         UserTrophy[]
+  gamingDna        UserGamingDna[]
+  personalityTraits UserPersonalityTrait[]
+  joinedAt         DateTime           @default(now())
+  learningProgress LearningProgress[]
+  preferences      UserPreferences?
+  guideProgress    UserGuideProgress[]
+}
+
+model UserPreferences {
+  id            String   @id @default(cuid())
+  userId        String   @unique
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  platforms     Json     @default("[]")
+  genres        Json     @default("[]")
+  favoriteGames Json     @default("[]")
+  updatedAt     DateTime @updatedAt
+  createdAt     DateTime @default(now())
+}
+
+model LearningProgress {
+  id               String   @id @default(cuid())
+  category         String
+  color            String
+  totalLessons     Int
+  completedLessons Int      @default(0)
+  userId           String
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  updatedAt        DateTime @updatedAt
+  createdAt        DateTime @default(now())
+
+  @@unique([userId, category])
+}
+
+model UserGuideProgress {
+  id               String   @id @default(cuid())
+  userId           String
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  guideId          Int
+  completedStepIds Json     @default("[]")
+  updatedAt        DateTime @updatedAt
+  createdAt        DateTime @default(now())
+
+  @@unique([userId, guideId])
+  @@index([userId])
+}
+
+model AppDataset {
+  key       String   @id
+  payload   Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Archetype {
+  id          String @id
+  name        String
+  icon        String
+  color       String
+  description String
+  users       User[]
+}
+
+model UserStats {
+  id             String @id @default(cuid())
+  userId         String @unique
+  user           User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  totalXp        Int    @default(0)
+  currentStreak  Int    @default(0)
+  longestStreak  Int    @default(0)
+  guidesStarted  Int    @default(0)
+  guidesCompleted Int   @default(0)
+  quizzesTaken   Int    @default(0)
+  communityPosts Int    @default(0)
+  helpfulVotes   Int    @default(0)
+  rank           Int    @default(0)
+  percentile     Int    @default(0)
+}
+
+model UserTrophy {
+  id          String   @id
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name        String
+  description String
+  icon        String
+  color       String
+  earnedAt    DateTime?
+  progress    Int?
+  maxProgress Int?
+  rarity      TrophyRarity
+
+  @@index([userId])
+}
+
+model UserGamingDna {
+  id     String @id @default(cuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name   String
+  value  Int
+  color  String
+
+  @@unique([userId, name])
+}
+
+model UserPersonalityTrait {
+  id       String @id @default(cuid())
+  userId   String
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  trait    String
+  value    Int
+  fullMark Int    @default(100)
+
+  @@unique([userId, trait])
+}

@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import { Search, Brain, User, BookOpen, Users, Home } from "lucide-react";
+import { useSession, signOut } from "next-auth/react";
+import { Search, Brain, User, BookOpen, Users, Home, LogIn } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 interface NavItem {
@@ -80,7 +81,7 @@ function LandingNav() {
           {/* CTAs */}
           <div className="flex items-center gap-4">
             <Link
-              href="/app"
+              href="/login"
               className="hidden sm:block text-sm font-medium text-white/60 hover:text-white transition-colors"
             >
               Connexion
@@ -101,6 +102,7 @@ function LandingNav() {
 // Navigation pour l'app
 function AppNav() {
   const pathname = usePathname();
+  const { status } = useSession();
   const [scrolled, setScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
 
@@ -186,17 +188,36 @@ function AppNav() {
               </button>
             )}
 
-            {/* Profil */}
-            <Link
-              href="/app/profile"
-              className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
-                pathname === "/app/profile"
-                  ? "bg-[#00D1FF]/15 text-[#00D1FF] border border-[#00D1FF]/30"
-                  : "bg-white/[0.05] border border-white/[0.08] text-white/50 hover:text-white hover:bg-white/[0.1] hover:border-white/[0.15]"
-              }`}
-            >
-              <User className="w-4 h-4" />
-            </Link>
+            {/* Connexion si visiteur, profil + déconnexion si connecté */}
+            {status === "unauthenticated" ? (
+              <Link
+                href="/login"
+                className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#00D1FF] text-black text-sm font-semibold hover:bg-[#00D1FF]/90 transition-all duration-300"
+              >
+                <LogIn className="w-4 h-4" />
+                <span className="hidden sm:inline">Connexion</span>
+              </Link>
+            ) : (
+              <div className="flex items-center gap-2">
+                <Link
+                  href="/app/profile"
+                  className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
+                    pathname === "/app/profile"
+                      ? "bg-[#00D1FF]/15 text-[#00D1FF] border border-[#00D1FF]/30"
+                      : "bg-white/[0.05] border border-white/[0.08] text-white/50 hover:text-white hover:bg-white/[0.1] hover:border-white/[0.15]"
+                  }`}
+                >
+                  <User className="w-4 h-4" />
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => signOut({ callbackUrl: "/" })}
+                  className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.02] border border-white/[0.06] text-xs font-medium uppercase tracking-wide text-white/50 hover:text-white hover:bg-white/[0.06] hover:border-white/[0.12] transition-all duration-300"
+                >
+                  <span>Déconnexion</span>
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>

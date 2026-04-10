@@ -1,5 +1,5 @@
-// Données utilisateur pour le prototype
-// TODO: Remplacer par des appels API réels
+// Donnees utilisateur pour le prototype
+// TODO: Remplacer les sections mockees restantes par des appels API reels
 
 export interface UserProfile {
   id: string;
@@ -59,6 +59,12 @@ export interface LearningProgress {
   color: string;
   totalLessons: number;
   completedLessons: number;
+}
+
+export interface UserPreferences {
+  platforms: string[];
+  genres: string[];
+  favoriteGameIds: string[];
 }
 
 // Données mockées
@@ -193,33 +199,84 @@ const mockLearningProgress: LearningProgress[] = [
   { category: "Mental", progress: 40, color: "#F59E0B", totalLessons: 10, completedLessons: 4 },
 ];
 
-// Fonctions d'accès aux données (simulent des appels API)
-// TODO: Remplacer ces fonctions par de vrais appels API
+// Fonctions d'accès aux données
+// getCurrentUser / getUserStats utilisent désormais de vraies API liées à l'utilisateur connecté
 
 export async function getCurrentUser(): Promise<UserProfile> {
-  // Simule un délai réseau
-  await new Promise((resolve) => setTimeout(resolve, 100));
-  return mockUserProfile;
+  const res = await fetch("/api/profile/me");
+  if (!res.ok) {
+    throw new Error("Impossible de charger le profil utilisateur.");
+  }
+  return (await res.json()) as UserProfile;
 }
 
 export async function getUserStats(): Promise<UserStats> {
-  await new Promise((resolve) => setTimeout(resolve, 100));
-  return mockUserStats;
+  const res = await fetch("/api/profile/stats");
+  if (!res.ok) {
+    throw new Error("Impossible de charger les statistiques utilisateur.");
+  }
+  return (await res.json()) as UserStats;
 }
 
 export async function getUserTrophies(): Promise<Trophy[]> {
-  await new Promise((resolve) => setTimeout(resolve, 100));
-  return mockTrophies;
+  const res = await fetch("/api/profile/trophies");
+  if (!res.ok) {
+    throw new Error("Impossible de charger les trophees utilisateur.");
+  }
+  return (await res.json()) as Trophy[];
 }
 
 export async function getGamingDNA(): Promise<GamingDNAAttribute[]> {
-  await new Promise((resolve) => setTimeout(resolve, 100));
-  return mockGamingDNA;
+  const res = await fetch("/api/profile/gaming-dna");
+  if (!res.ok) {
+    throw new Error("Impossible de charger l'ADN gaming.");
+  }
+  return (await res.json()) as GamingDNAAttribute[];
 }
 
 export async function getLearningProgress(): Promise<LearningProgress[]> {
-  await new Promise((resolve) => setTimeout(resolve, 100));
-  return mockLearningProgress;
+  const res = await fetch("/api/profile/learning-progress");
+  if (!res.ok) {
+    throw new Error("Impossible de charger la progression d'apprentissage.");
+  }
+  return (await res.json()) as LearningProgress[];
+}
+
+export async function getUserPreferences(): Promise<UserPreferences> {
+  const res = await fetch("/api/profile/preferences");
+  if (!res.ok) {
+    throw new Error("Impossible de charger les préférences utilisateur.");
+  }
+  return (await res.json()) as UserPreferences;
+}
+
+export async function updateUserPreferences(payload: UserPreferences): Promise<UserPreferences> {
+  const res = await fetch("/api/profile/preferences", {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+  if (!res.ok) {
+    throw new Error("Impossible de sauvegarder les préférences utilisateur.");
+  }
+  return (await res.json()) as UserPreferences;
+}
+
+export async function updateUserArchetype(archetypeId: string): Promise<void> {
+  const res = await fetch("/api/profile/archetype", {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ archetypeId }),
+  });
+  if (res.status === 401 || res.status === 403) {
+    // L'utilisateur peut compléter le quiz sans être connecté.
+    return;
+  }
+  if (!res.ok) {
+    const payload = (await res.json().catch(() => null)) as { message?: string } | null;
+    const reason = payload?.message ? ` (${payload.message})` : "";
+    throw new Error(`Impossible de sauvegarder l'archétype utilisateur.${reason}`);
+  }
 }
 
 // Versions synchrones pour l'initialisation (à éviter en production)

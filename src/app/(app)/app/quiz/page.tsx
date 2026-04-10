@@ -20,6 +20,7 @@ import {
   type Archetype,
 } from "@/data/archetypes";
 import { getGameRecommendations, type GameRecommendation } from "@/data/games";
+import { updateUserArchetype } from "@/data/user";
 
 type QuizState = "intro" | "quiz" | "calculating" | "result";
 
@@ -66,11 +67,18 @@ export default function QuizPage() {
       try {
         const resultData = await calculateQuizResult(answers);
         setResult(resultData);
-        
+
+        // Persister l'archétype du quiz dans le profil utilisateur
+        try {
+          await updateUserArchetype(resultData.primaryArchetype.id);
+        } catch (persistError) {
+          console.error("Impossible de sauvegarder l'archétype:", persistError);
+        }
+
         // Charger les recommandations basées sur l'archétype
         const recs = await getGameRecommendations(resultData.primaryArchetype.id);
         setRecommendations(recs.slice(0, 4));
-        
+
         setState("result");
       } catch (error) {
         console.error("Erreur lors du calcul:", error);
@@ -100,6 +108,24 @@ export default function QuizPage() {
   const progress = questions.length > 0 ? ((currentIndex + 1) / questions.length) * 100 : 0;
   const currentQuestion = questions[currentIndex];
   const currentAnswer = currentQuestion ? answers[currentQuestion.id] : null;
+
+  useEffect(() => {
+    if (state !== "quiz") {
+      return;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== "Enter" || !currentAnswer) {
+        return;
+      }
+
+      event.preventDefault();
+      void goToNext();
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [state, currentAnswer, currentIndex, questions.length, answers]);
 
   if (loading) {
     return (

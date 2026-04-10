@@ -16,12 +16,6 @@ export {
   getUserTrophies,
   getGamingDNA,
   getLearningProgress,
-  // Versions synchrones (pour SSR ou initialisation)
-  getCurrentUserSync,
-  getUserStatsSync,
-  getUserTrophiesSync,
-  getGamingDNASync,
-  getLearningProgressSync,
   // Types
   type UserProfile,
   type UserStats,
@@ -38,10 +32,6 @@ export {
   getPostComments,
   togglePostLike,
   joinGroup,
-  // Versions synchrones
-  getCommunityPostsSync,
-  getTopMembersSync,
-  getCommunityGroupsSync,
   // Types
   type CommunityPost,
   type CommunityMember,
@@ -55,9 +45,6 @@ export {
   getArchetypeById,
   getQuizQuestions,
   calculateQuizResult,
-  // Versions synchrones
-  getArchetypesSync,
-  getQuizQuestionsSync,
   // Types
   type Archetype,
   type QuizQuestion,
@@ -71,15 +58,14 @@ export {
   getPlayerGames,
   getGameRecommendations,
   getPopularGames,
-  // Versions synchrones
-  getAllGamesSync,
-  getPlayerGamesSync,
-  getGameRecommendationsSync,
   // Types
   type Game,
   type GameRecommendation,
   type PlayerGame,
 } from "./games";
+
+// ==================== CATALOG OPTIONS ====================
+export { getCatalogOptions, type CatalogOptions } from "./catalog";
 
 // ==================== API HELPERS ====================
 // Ces helpers préparent la migration vers une vraie API

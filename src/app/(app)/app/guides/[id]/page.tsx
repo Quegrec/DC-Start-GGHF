@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useParams, notFound } from "next/navigation";
+import { useParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -18,7 +18,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { Card, Badge, ProgressBar, SectionHeader } from "@/components/common";
-import { getGuideById, type Guide, type GuideStep } from "@/data/guides";
+import { getGuideById, updateGuideStepProgress, type Guide, type GuideStep } from "@/data/guides";
 
 export default function GuidePage() {
   const params = useParams();
@@ -27,15 +27,20 @@ export default function GuidePage() {
   const [guide, setGuide] = useState<Guide | null>(null);
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const [activeTab, setActiveTab] = useState<"content" | "steps">("content");
+  const [savingProgress, setSavingProgress] = useState(false);
 
   useEffect(() => {
-    const guideData = getGuideById(guideId);
-    if (guideData) {
-      setGuide(guideData);
-      // Trouver la première étape non complétée
-      const firstIncompleteIndex = guideData.steps.findIndex((s) => !s.completed);
-      setCurrentStepIndex(firstIncompleteIndex >= 0 ? firstIncompleteIndex : guideData.steps.length - 1);
+    async function loadGuide() {
+      const guideData = await getGuideById(guideId);
+      if (guideData) {
+        setGuide(guideData);
+        // Trouver la première étape non complétée
+        const firstIncompleteIndex = guideData.steps.findIndex((s) => !s.completed);
+        setCurrentStepIndex(firstIncompleteIndex >= 0 ? firstIncompleteIndex : guideData.steps.length - 1);
+      }
     }
+
+    void loadGuide();
   }, [guideId]);
 
   if (!guide) {
@@ -71,6 +76,56 @@ export default function GuidePage() {
     if (index >= 0 && index < guide.steps.length) {
       setCurrentStepIndex(index);
     }
+  };
+
+  const applyLocalCompletion = (inputGuide: Guide, stepId: number): Guide => {
+    const steps = inputGuide.steps.map((step) =>
+      step.id === stepId ? { ...step, completed: true } : step,
+    );
+    const completedSteps = steps.filter((step) => step.completed).length;
+    return {
+      ...inputGuide,
+      steps,
+      completedSteps,
+      progress: Math.round((completedSteps / steps.length) * 100),
+    };
+  };
+
+  const markCurrentStepAsCompleted = async (): Promise<Guide> => {
+    if (!guide) {
+      throw new Error("Guide introuvable.");
+    }
+
+    const current = guide.steps[currentStepIndex];
+    if (current.completed) {
+      return guide;
+    }
+
+    setSavingProgress(true);
+    try {
+      const updated = await updateGuideStepProgress(guide.id, current.id, true);
+      if (updated) {
+        setGuide(updated);
+        return updated;
+      }
+
+      const localGuide = applyLocalCompletion(guide, current.id);
+      setGuide(localGuide);
+      return localGuide;
+    } finally {
+      setSavingProgress(false);
+    }
+  };
+
+  const handleNextStep = async () => {
+    const updatedGuide = await markCurrentStepAsCompleted();
+    if (currentStepIndex < updatedGuide.steps.length - 1) {
+      setCurrentStepIndex((prev) => prev + 1);
+    }
+  };
+
+  const handleCompleteGuide = async () => {
+    await markCurrentStepAsCompleted();
   };
 
   return (
@@ -311,16 +366,21 @@ export default function GuidePage() {
                     </button>
                     {currentStepIndex < guide.steps.length - 1 ? (
                       <button
-                        onClick={() => goToStep(currentStepIndex + 1)}
+                        onClick={() => void handleNextStep()}
+                        disabled={savingProgress}
                         className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#00D1FF] text-black font-semibold hover:bg-[#00D1FF]/90 transition-colors"
                       >
                         {currentStep.completed ? "Étape suivante" : "Marquer et continuer"}
                         <ArrowRight className="w-4 h-4" />
                       </button>
                     ) : (
-                      <button className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#10B981] text-black font-semibold hover:bg-[#10B981]/90 transition-colors">
+                      <button
+                        onClick={() => void handleCompleteGuide()}
+                        disabled={savingProgress}
+                        className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#10B981] text-black font-semibold hover:bg-[#10B981]/90 transition-colors disabled:opacity-70"
+                      >
                         <Trophy className="w-4 h-4" />
-                        Terminer le guide
+                        {currentStep.completed ? "Guide terminé" : "Terminer le guide"}
                       </button>
                     )}
                   </div>

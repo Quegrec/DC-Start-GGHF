@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import {
   BookOpen,
@@ -13,12 +13,23 @@ import {
 import { Card, Badge, ProgressBar, StatCard, SectionHeader } from "@/components/common";
 import { getAllGuides, type Guide } from "@/data/guides";
 
-// Récupérer les guides depuis le fichier de données
-const allGuides = getAllGuides();
-
 export default function GuidesPage() {
+  const [allGuides, setAllGuides] = useState<Guide[]>([]);
   const [filter, setFilter] = useState<"all" | "inProgress" | "completed" | "new">("all");
   const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    async function loadGuides() {
+      try {
+        const guides = await getAllGuides();
+        setAllGuides(guides);
+      } catch (error) {
+        console.error("Erreur lors du chargement des guides:", error);
+      }
+    }
+
+    loadGuides();
+  }, []);
 
   const filteredGuides = allGuides.filter((guide) => {
     const matchesSearch =

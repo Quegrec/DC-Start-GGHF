@@ -10,12 +10,14 @@ import { getCurrentUser, type UserProfile } from "@/data/user";
 export function ProfileHeader() {
   const [user, setUser] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
+  const [avatarSrc, setAvatarSrc] = useState("/avatar-placeholder.svg");
 
   useEffect(() => {
     async function fetchUser() {
       try {
         const userData = await getCurrentUser();
         setUser(userData);
+        setAvatarSrc(userData.avatar || "/avatar-placeholder.svg");
       } catch (error) {
         console.error("Erreur lors du chargement du profil:", error);
       } finally {
@@ -54,10 +56,11 @@ export function ProfileHeader() {
         <div className="relative flex-shrink-0">
           <div className="w-32 h-32 rounded-2xl overflow-hidden border-2 border-[#00D1FF]/30 shadow-lg shadow-[#00D1FF]/20 relative">
             <Image
-              src={user.avatar}
+              src={avatarSrc}
               alt={`Avatar de ${user.username}`}
               fill
               className="object-cover"
+              onError={() => setAvatarSrc("/avatar-placeholder.svg")}
             />
           </div>
 

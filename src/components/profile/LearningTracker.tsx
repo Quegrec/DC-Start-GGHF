@@ -17,7 +17,7 @@ export function LearningTracker() {
     async function fetchData() {
       try {
         const [guidesData, progressData] = await Promise.all([
-          Promise.resolve(getAllGuides()),
+          getAllGuides(),
           getLearningProgress(),
         ]);
         setGuides(guidesData);
@@ -113,7 +113,7 @@ export function LearningTracker() {
         </div>
 
         {/* Cartes de guides */}
-        <div className="space-y-3 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
+        <div className="space-y-3 max-h-[300px] overflow-y-auto pr-2">
           {displayGuides.length === 0 ? (
             <div className="text-center py-8 text-white/40">
               {activeTab === "completed"

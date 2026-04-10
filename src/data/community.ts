@@ -1,5 +1,6 @@
 // Données communauté pour le prototype
 // TODO: Remplacer par des appels API réels
+import { fetchDataset } from "./api-client";
 
 export interface CommunityPost {
   id: string;
@@ -287,52 +288,55 @@ const mockComments: Record<string, Comment[]> = {
 // TODO: Remplacer par de vrais appels API
 
 export async function getCommunityPosts(filter?: string): Promise<CommunityPost[]> {
-  await new Promise((resolve) => setTimeout(resolve, 150));
-  
+  const allPosts = await fetchDataset<CommunityPost[]>("community-posts");
+
   if (filter && filter !== "all") {
-    return mockPosts.filter((post) => 
+    return allPosts.filter((post) =>
       post.tags.some((tag) => tag.toLowerCase().includes(filter.toLowerCase()))
     );
   }
-  
-  return mockPosts;
+
+  return allPosts;
 }
 
 export async function getTopMembers(limit: number = 5): Promise<CommunityMember[]> {
-  await new Promise((resolve) => setTimeout(resolve, 100));
-  return mockTopMembers.slice(0, limit);
+  const members = await fetchDataset<CommunityMember[]>("community-top-members");
+  return members.slice(0, limit);
 }
 
 export async function getCommunityGroups(): Promise<CommunityGroup[]> {
-  await new Promise((resolve) => setTimeout(resolve, 100));
-  return mockGroups;
+  return fetchDataset<CommunityGroup[]>("community-groups");
 }
 
 export async function getPostComments(postId: string): Promise<Comment[]> {
-  await new Promise((resolve) => setTimeout(resolve, 100));
-  return mockComments[postId] || [];
+  const allComments = await fetchDataset<Record<string, Comment[]>>("community-comments");
+  return allComments[postId] || [];
 }
 
 export async function togglePostLike(postId: string): Promise<{ success: boolean; newLikeCount: number }> {
-  await new Promise((resolve) => setTimeout(resolve, 50));
-  const post = mockPosts.find((p) => p.id === postId);
-  if (post) {
-    post.isLiked = !post.isLiked;
-    post.likes += post.isLiked ? 1 : -1;
-    return { success: true, newLikeCount: post.likes };
+  const response = await fetch(`/api/community/posts/${postId}/like`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+  });
+
+  if (!response.ok) {
+    return { success: false, newLikeCount: 0 };
   }
-  return { success: false, newLikeCount: 0 };
+
+  return (await response.json()) as { success: boolean; newLikeCount: number };
 }
 
 export async function joinGroup(groupId: string): Promise<{ success: boolean }> {
-  await new Promise((resolve) => setTimeout(resolve, 50));
-  const group = mockGroups.find((g) => g.id === groupId);
-  if (group) {
-    group.isJoined = !group.isJoined;
-    group.membersCount += group.isJoined ? 1 : -1;
-    return { success: true };
+  const response = await fetch(`/api/community/groups/${groupId}/join`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+  });
+
+  if (!response.ok) {
+    return { success: false };
   }
-  return { success: false };
+
+  return (await response.json()) as { success: boolean };
 }
 
 // Versions synchrones
@@ -346,4 +350,8 @@ export function getTopMembersSync(limit: number = 5): CommunityMember[] {
 
 export function getCommunityGroupsSync(): CommunityGroup[] {
   return mockGroups;
+}
+
+export function getCommentsMapSync(): Record<string, Comment[]> {
+  return mockComments;
 }

@@ -1,5 +1,6 @@
 // Données archétypes et quiz pour le prototype
 // TODO: Remplacer par des appels API réels
+import { fetchDataset } from "./api-client";
 
 export interface Archetype {
   id: string;
@@ -519,18 +520,16 @@ const quizQuestions: QuizQuestion[] = [
 
 // Fonctions d'accès aux données
 export async function getArchetypes(): Promise<Archetype[]> {
-  await new Promise((resolve) => setTimeout(resolve, 100));
-  return archetypes;
+  return fetchDataset<Archetype[]>("archetypes");
 }
 
 export async function getArchetypeById(id: string): Promise<Archetype | undefined> {
-  await new Promise((resolve) => setTimeout(resolve, 50));
-  return archetypes.find((a) => a.id === id);
+  const allArchetypes = await getArchetypes();
+  return allArchetypes.find((a) => a.id === id);
 }
 
 export async function getQuizQuestions(): Promise<QuizQuestion[]> {
-  await new Promise((resolve) => setTimeout(resolve, 100));
-  return quizQuestions;
+  return fetchDataset<QuizQuestion[]>("quiz-questions");
 }
 
 export async function calculateQuizResult(answers: Record<number, string>): Promise<{
@@ -538,7 +537,7 @@ export async function calculateQuizResult(answers: Record<number, string>): Prom
   secondaryArchetype: Archetype | null;
   scores: Record<string, number>;
 }> {
-  await new Promise((resolve) => setTimeout(resolve, 200));
+  const [questions, allArchetypes] = await Promise.all([getQuizQuestions(), getArchetypes()]);
 
   // Calculer les scores
   const scores: Record<string, number> = {
@@ -551,7 +550,7 @@ export async function calculateQuizResult(answers: Record<number, string>): Prom
   };
 
   for (const [questionId, answerId] of Object.entries(answers)) {
-    const question = quizQuestions.find((q) => q.id === parseInt(questionId));
+    const question = questions.find((q) => q.id === parseInt(questionId));
     if (question) {
       const option = question.options.find((o) => o.id === answerId);
       if (option) {
@@ -564,10 +563,10 @@ export async function calculateQuizResult(answers: Record<number, string>): Prom
 
   // Trouver l'archétype dominant
   const sortedScores = Object.entries(scores).sort((a, b) => b[1] - a[1]);
-  const primaryArchetype = archetypes.find((a) => a.id === sortedScores[0][0])!;
+  const primaryArchetype = allArchetypes.find((a) => a.id === sortedScores[0][0])!;
   const secondaryArchetype =
     sortedScores[1][1] > 5
-      ? archetypes.find((a) => a.id === sortedScores[1][0]) || null
+      ? allArchetypes.find((a) => a.id === sortedScores[1][0]) || null
       : null;
 
   return { primaryArchetype, secondaryArchetype, scores };

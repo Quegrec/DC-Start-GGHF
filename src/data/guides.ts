@@ -1,5 +1,4 @@
-// Données statiques des guides pour le prototype
-// À remplacer par une base de données en production
+// Données statiques des guides pour fallback serveur et seed
 
 export interface GuideStep {
   id: number;
@@ -706,11 +705,53 @@ export const guidesData: Guide[] = [
 ];
 
 // Fonction pour récupérer un guide par son ID
-export function getGuideById(id: number): Guide | undefined {
-  return guidesData.find((guide) => guide.id === id);
+export async function getGuideById(id: number): Promise<Guide | undefined> {
+  const res = await fetch(`/api/guides/${id}`, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    return undefined;
+  }
+
+  return (await res.json()) as Guide;
 }
 
 // Fonction pour récupérer tous les guides (pour la liste)
-export function getAllGuides(): Guide[] {
-  return guidesData;
+export async function getAllGuides(): Promise<Guide[]> {
+  const res = await fetch("/api/guides", {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error("Impossible de charger les guides.");
+  }
+
+  return (await res.json()) as Guide[];
+}
+
+export async function updateGuideStepProgress(
+  guideId: number,
+  stepId: number,
+  completed = true,
+): Promise<Guide | null> {
+  const res = await fetch(`/api/guides/${guideId}/progress`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ stepId, completed }),
+  });
+
+  if (res.status === 401 || res.status === 403) {
+    return null;
+  }
+
+  if (!res.ok) {
+    throw new Error("Impossible de sauvegarder la progression du guide.");
+  }
+
+  return (await res.json()) as Guide;
 }

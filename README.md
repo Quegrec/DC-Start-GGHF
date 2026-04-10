@@ -134,15 +134,49 @@ Chaque fichier expose :
 | `npm run build` | Build de production |
 | `npm run start` | Serveur de production |
 | `npm run lint` | Vérification ESLint |
+| `npm run db:generate` | Génère le client Prisma |
+| `npm run db:migrate` | Applique une migration locale |
+| `npm run db:studio` | Ouvre Prisma Studio |
+| `npm run db:seed` | Insère les données initiales |
 
 ## 📝 TODO Production
 
-- [ ] Connecter à une vraie base de données (Prisma/Supabase)
+- [x] Connecter à une vraie base de données (Prisma/PostgreSQL)
 - [ ] Authentification utilisateur (NextAuth)
 - [ ] API routes pour les mutations
 - [ ] Tests unitaires et E2E
 - [ ] Optimisation des images (next/image CDN)
 - [ ] Analytics et monitoring
+
+## 🗄️ Backend & BDD
+
+Le projet inclut maintenant une base backend avec Prisma + PostgreSQL :
+
+- `prisma/schema.prisma` : modèles `User` et `LearningProgress`
+- `src/lib/db.ts` : singleton Prisma Client
+- `src/server/repositories/` : accès DB
+- `src/server/services/` : logique métier
+- `src/server/schemas/` : validation/normalisation avec Zod
+- `src/app/api/health/route.ts` : endpoint de santé
+- `src/app/api/profile/learning-progress/route.ts` : endpoint de progression
+
+### Setup local rapide
+
+1. Copier `env.example` vers `.env` (ou créer `.env` manuellement)
+2. Configurer `DATABASE_URL`, `AUTH_SECRET`, `NEXTAUTH_URL` et `DEMO_LOGIN_PASSWORD`
+3. Exécuter :
+
+```bash
+npm run db:generate
+npm run db:migrate
+npm run db:seed
+```
+
+### Connexion
+
+- Page de connexion : `/login`
+- Email seed par défaut : `novastar@example.com`
+- Mot de passe : valeur de `DEMO_LOGIN_PASSWORD` dans `.env`
 
 ## 📜 Licence
 
