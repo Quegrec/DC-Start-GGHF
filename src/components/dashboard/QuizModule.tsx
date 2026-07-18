@@ -56,7 +56,7 @@ export function QuizModule() {
 
       <div className="rounded-2xl bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 overflow-hidden backdrop-blur-xl">
         {/* Media Placeholder */}
-        <div className="relative aspect-video bg-gradient-to-br from-[#00D1FF]/10 to-[#121212] overflow-hidden">
+        <div className="relative aspect-video bg-gradient-to-br from-[#34D399]/10 to-[#0B0F19] overflow-hidden">
           <Image
             src="https://images.unsplash.com/photo-1748443992821-913d6166c18b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0YWN0aWNhbCUyMHNob290ZXIlMjB0cmFpbmluZyUyMG1pbGl0YXJ5fGVufDF8fHx8MTc2OTkyNDUzNHww&ixlib=rb-4.1.0&q=80&w=1080"
             alt="Tactical scenario"
@@ -64,10 +64,10 @@ export function QuizModule() {
             className="object-cover opacity-60"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F19] via-[#0B0F19]/40 to-transparent" />
 
           {/* Question Number Badge */}
-          <div className="absolute top-6 left-6 px-4 py-2 rounded-xl bg-[#00D1FF]/90 backdrop-blur-sm border border-[#00D1FF]/30">
+          <div className="absolute top-6 left-6 px-4 py-2 rounded-xl bg-[#34D399]/90 backdrop-blur-sm border border-[#34D399]/30">
             <span className="text-sm font-semibold">Question 3 of 10</span>
           </div>
         </div>
@@ -90,8 +90,8 @@ export function QuizModule() {
                     group relative p-6 rounded-2xl border-2 text-left transition-all duration-300
                     ${
                       isSelected
-                        ? "bg-[#00D1FF]/10 border-[#00D1FF] shadow-lg shadow-[#00D1FF]/20"
-                        : "bg-white/5 border-white/10 hover:border-[#00D1FF]/50 hover:bg-white/10"
+                        ? "bg-[#34D399]/10 border-[#34D399] shadow-lg shadow-[#34D399]/20"
+                        : "bg-white/5 border-white/10 hover:border-[#34D399]/50 hover:bg-white/10"
                     }
                   `}
                 >
@@ -101,8 +101,8 @@ export function QuizModule() {
                     w-12 h-12 rounded-xl mb-4 flex items-center justify-center transition-all duration-300
                     ${
                       isSelected
-                        ? "bg-[#00D1FF]/20 text-[#00D1FF]"
-                        : "bg-white/10 text-white/60 group-hover:bg-[#00D1FF]/10 group-hover:text-[#00D1FF]"
+                        ? "bg-[#34D399]/20 text-[#34D399]"
+                        : "bg-white/10 text-white/60 group-hover:bg-[#34D399]/10 group-hover:text-[#34D399]"
                     }
                   `}
                   >
@@ -123,7 +123,7 @@ export function QuizModule() {
                   <div
                     className={`
                     mt-4 text-xs font-medium transition-colors duration-300
-                    ${isSelected ? "text-[#00D1FF]" : "text-white/40 group-hover:text-[#00D1FF]/70"}
+                    ${isSelected ? "text-[#34D399]" : "text-white/40 group-hover:text-[#34D399]/70"}
                   `}
                   >
                     {response.archetype} Archetype
@@ -131,7 +131,7 @@ export function QuizModule() {
 
                   {/* Selection Indicator */}
                   {isSelected && (
-                    <div className="absolute top-4 right-4 w-6 h-6 rounded-full bg-[#00D1FF] flex items-center justify-center">
+                    <div className="absolute top-4 right-4 w-6 h-6 rounded-full bg-[#34D399] flex items-center justify-center">
                       <svg
                         className="w-4 h-4 text-white"
                         fill="none"
@@ -155,7 +155,7 @@ export function QuizModule() {
           {/* Next Button */}
           <button
             disabled={!selectedResponse}
-            className="mt-8 w-full py-4 rounded-2xl bg-gradient-to-r from-[#00D1FF] to-[#00D1FF]/80 text-white font-semibold hover:shadow-lg hover:shadow-[#00D1FF]/30 transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:shadow-none"
+            className="mt-8 w-full py-4 rounded-2xl bg-gradient-to-r from-[#34D399] to-[#34D399]/80 text-white font-semibold hover:shadow-lg hover:shadow-[#34D399]/30 transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:shadow-none"
           >
             Continue
           </button>

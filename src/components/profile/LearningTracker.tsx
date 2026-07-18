@@ -33,9 +33,9 @@ export function LearningTracker() {
 
   if (loading) {
     return (
-      <Card glow glowColor="#00D1FF" className="p-6">
+      <Card glow glowColor="#34D399" className="p-6">
         <div className="flex items-center justify-center h-48">
-          <Loader2 className="w-8 h-8 animate-spin text-[#00D1FF]" />
+          <Loader2 className="w-8 h-8 animate-spin text-[#34D399]" />
         </div>
       </Card>
     );
@@ -60,7 +60,7 @@ export function LearningTracker() {
   };
 
   return (
-    <Card glow glowColor="#00D1FF" className="p-6">
+    <Card glow glowColor="#34D399" className="p-6">
       <div>
         <SectionHeader title="Suivi d'apprentissage" />
 
@@ -90,7 +90,7 @@ export function LearningTracker() {
               flex-1 px-4 py-2.5 rounded-lg font-medium text-sm transition-all duration-300
               ${
                 activeTab === "inProgress"
-                  ? "bg-[#00D1FF]/20 text-[#00D1FF] border border-[#00D1FF]/30 shadow-lg shadow-[#00D1FF]/10"
+                  ? "bg-[#34D399]/20 text-[#34D399] border border-[#34D399]/30 shadow-lg shadow-[#34D399]/10"
                   : "text-white/60 hover:text-white hover:bg-white/5"
               }
             `}
@@ -103,7 +103,7 @@ export function LearningTracker() {
               flex-1 px-4 py-2.5 rounded-lg font-medium text-sm transition-all duration-300
               ${
                 activeTab === "completed"
-                  ? "bg-[#00D1FF]/20 text-[#00D1FF] border border-[#00D1FF]/30 shadow-lg shadow-[#00D1FF]/10"
+                  ? "bg-[#34D399]/20 text-[#34D399] border border-[#34D399]/30 shadow-lg shadow-[#34D399]/10"
                   : "text-white/60 hover:text-white hover:bg-white/5"
               }
             `}
@@ -128,7 +128,7 @@ export function LearningTracker() {
                 <Link
                   href={`/app/guides/${guide.id}`}
                   key={guide.id}
-                  className="block p-4 rounded-xl bg-white/5 border border-white/10 hover:border-[#00D1FF]/30 hover:bg-white/10 transition-all duration-300 cursor-pointer group"
+                  className="block p-4 rounded-xl bg-white/5 border border-white/10 hover:border-[#34D399]/30 hover:bg-white/10 transition-all duration-300 cursor-pointer group"
                 >
                   <div className="flex items-start gap-3">
                     {/* Icône */}
@@ -138,7 +138,7 @@ export function LearningTracker() {
                       ${
                         guide.progress === 100
                           ? "bg-[#10B981]/20 text-[#10B981]"
-                          : "bg-[#00D1FF]/10 text-[#00D1FF]"
+                          : "bg-[#34D399]/10 text-[#34D399]"
                       }
                     `}
                     >
@@ -151,7 +151,7 @@ export function LearningTracker() {
 
                     {/* Contenu */}
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-semibold mb-1 group-hover:text-[#00D1FF] transition-colors">
+                      <h3 className="font-semibold mb-1 group-hover:text-[#34D399] transition-colors">
                         {guide.title}
                       </h3>
                       <p className="text-xs text-white/50 mb-2">
@@ -161,15 +161,15 @@ export function LearningTracker() {
                       {/* Barre de progression */}
                       <ProgressBar
                         value={guide.progress}
-                        color={guide.progress === 100 ? "#10B981" : "#00D1FF"}
+                        color={guide.progress === 100 ? "#10B981" : "#34D399"}
                         size="sm"
                       />
                     </div>
 
                     {/* Bouton action */}
                     <div className="opacity-0 group-hover:opacity-100 transition-opacity">
-                      <div className="w-8 h-8 rounded-lg bg-[#00D1FF]/20 flex items-center justify-center">
-                        <Play className="w-4 h-4 text-[#00D1FF]" />
+                      <div className="w-8 h-8 rounded-lg bg-[#34D399]/20 flex items-center justify-center">
+                        <Play className="w-4 h-4 text-[#34D399]" />
                       </div>
                     </div>
                   </div>

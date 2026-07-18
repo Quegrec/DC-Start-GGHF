@@ -32,7 +32,7 @@ export function TrophyRoom() {
       case "epic":
         return "border-[#8B5CF6]";
       case "rare":
-        return "border-[#00D1FF]";
+        return "border-[#34D399]";
       default:
         return "border-white/20";
     }
@@ -40,9 +40,9 @@ export function TrophyRoom() {
 
   if (loading) {
     return (
-      <Card glow glowColor="#00D1FF" className="p-8">
+      <Card glow glowColor="#34D399" className="p-8">
         <div className="flex items-center justify-center h-32">
-          <Loader2 className="w-8 h-8 animate-spin text-[#00D1FF]" />
+          <Loader2 className="w-8 h-8 animate-spin text-[#34D399]" />
         </div>
       </Card>
     );
@@ -51,7 +51,7 @@ export function TrophyRoom() {
   const earnedCount = trophies.filter((t) => t.earnedAt).length;
 
   return (
-    <Card glow glowColor="#00D1FF" className="p-8">
+    <Card glow glowColor="#34D399" className="p-8">
       <Collapsible open={isOpen} onOpenChange={setIsOpen}>
         <div className="mb-6 flex items-start justify-between gap-4">
           <div className="flex-1 min-w-0">
@@ -106,7 +106,7 @@ export function TrophyRoom() {
                     </span>
 
                     {isEarned && (
-                      <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#10B981] border-2 border-[#121212] flex items-center justify-center">
+                      <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#10B981] border-2 border-[#0B0F19] flex items-center justify-center">
                         <svg
                           className="w-3 h-3 text-white"
                           fill="none"
@@ -126,7 +126,7 @@ export function TrophyRoom() {
 
                   {/* Infobulle */}
                   <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                    <div className="bg-[#0a0a0a] border border-white/20 rounded-xl px-4 py-3 shadow-xl min-w-[200px] backdrop-blur-xl">
+                    <div className="bg-[#0B0F19] border border-white/20 rounded-xl px-4 py-3 shadow-xl min-w-[200px] backdrop-blur-xl">
                       <p className="font-semibold mb-1" style={{ color: trophy.color }}>
                         {trophy.name}
                       </p>
@@ -160,7 +160,7 @@ export function TrophyRoom() {
                               : trophy.rarity === "epic"
                               ? "bg-[#8B5CF6]/20 text-[#8B5CF6]"
                               : trophy.rarity === "rare"
-                              ? "bg-[#00D1FF]/20 text-[#00D1FF]"
+                              ? "bg-[#34D399]/20 text-[#34D399]"
                               : "bg-white/10 text-white/60"
                           }`}
                         >

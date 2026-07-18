@@ -117,7 +117,7 @@ const mockTrophies: Trophy[] = [
     name: "Érudit",
     description: "Compléter 5 guides",
     icon: "📚",
-    color: "#00D1FF",
+    color: "#34D399",
     earnedAt: "2024-04-05",
     rarity: "common",
   },
@@ -185,7 +185,7 @@ const mockTrophies: Trophy[] = [
 
 const mockGamingDNA: GamingDNAAttribute[] = [
   { name: "Stratégie", value: 85, color: "#8B5CF6" },
-  { name: "Réflexes", value: 70, color: "#00D1FF" },
+  { name: "Réflexes", value: 70, color: "#34D399" },
   { name: "Coopération", value: 90, color: "#10B981" },
   { name: "Compétition", value: 65, color: "#F59E0B" },
   { name: "Exploration", value: 75, color: "#EC4899" },
@@ -193,7 +193,7 @@ const mockGamingDNA: GamingDNAAttribute[] = [
 ];
 
 const mockLearningProgress: LearningProgress[] = [
-  { category: "Mécanique", progress: 75, color: "#00D1FF", totalLessons: 20, completedLessons: 15 },
+  { category: "Mécanique", progress: 75, color: "#34D399", totalLessons: 20, completedLessons: 15 },
   { category: "Stratégie", progress: 60, color: "#8B5CF6", totalLessons: 15, completedLessons: 9 },
   { category: "Communication", progress: 100, color: "#10B981", totalLessons: 8, completedLessons: 8 },
   { category: "Mental", progress: 40, color: "#F59E0B", totalLessons: 10, completedLessons: 4 },

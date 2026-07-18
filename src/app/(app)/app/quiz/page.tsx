@@ -132,7 +132,7 @@ export default function QuizPage() {
       <main className="pt-24 pb-16">
         <div className="max-w-4xl mx-auto px-6">
           <div className="flex items-center justify-center h-64">
-            <Loader2 className="w-10 h-10 animate-spin text-[#00D1FF]" />
+            <Loader2 className="w-10 h-10 animate-spin text-[#34D399]" />
           </div>
         </div>
       </main>
@@ -144,14 +144,14 @@ export default function QuizPage() {
     return (
       <main className="pt-24 pb-16">
         <div className="max-w-4xl mx-auto px-6">
-          <Card glow glowColor="#00D1FF" className="p-8 md:p-12 text-center">
-            <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#00D1FF] to-[#8B5CF6] flex items-center justify-center mx-auto mb-6">
+          <Card glow glowColor="#34D399" className="p-8 md:p-12 text-center">
+            <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#34D399] to-[#8B5CF6] flex items-center justify-center mx-auto mb-6">
               <Sparkles className="w-10 h-10 text-white" />
             </div>
 
             <h1 className="text-3xl md:text-4xl font-bold mb-4">
               Découvrez votre{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00D1FF] to-[#8B5CF6]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#34D399] to-[#8B5CF6]">
                 Archétype de Joueur
               </span>
             </h1>
@@ -164,7 +164,7 @@ export default function QuizPage() {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
               <div className="p-4 rounded-xl bg-white/5 border border-white/10">
-                <p className="text-2xl font-bold text-[#00D1FF]">{questions.length}</p>
+                <p className="text-2xl font-bold text-[#34D399]">{questions.length}</p>
                 <p className="text-sm text-white/50">Questions</p>
               </div>
               <div className="p-4 rounded-xl bg-white/5 border border-white/10">
@@ -183,7 +183,7 @@ export default function QuizPage() {
 
             <button
               onClick={startQuiz}
-              className="px-8 py-4 rounded-2xl bg-gradient-to-r from-[#00D1FF] to-[#00D1FF]/80 text-black font-semibold text-lg hover:shadow-2xl hover:shadow-[#00D1FF]/30 transition-all duration-300 flex items-center gap-3 mx-auto"
+              className="px-8 py-4 rounded-2xl bg-gradient-to-r from-[#F97316] to-[#FB923C] text-[#0B0F19] font-semibold text-lg hover:shadow-2xl hover:shadow-[#F97316]/30 transition-all duration-300 flex items-center gap-3 mx-auto"
             >
               Commencer le test
               <ArrowRight className="w-5 h-5" />
@@ -199,8 +199,8 @@ export default function QuizPage() {
     return (
       <main className="pt-24 pb-16">
         <div className="max-w-4xl mx-auto px-6">
-          <Card glow glowColor="#00D1FF" className="p-12 text-center">
-            <Loader2 className="w-16 h-16 animate-spin text-[#00D1FF] mx-auto mb-6" />
+          <Card glow glowColor="#34D399" className="p-12 text-center">
+            <Loader2 className="w-16 h-16 animate-spin text-[#34D399] mx-auto mb-6" />
             <h2 className="text-2xl font-bold mb-2">Analyse en cours...</h2>
             <p className="text-white/60">
               Nous analysons vos réponses pour déterminer votre archétype
@@ -322,7 +322,7 @@ export default function QuizPage() {
               {recommendations.map((rec) => (
                 <div
                   key={rec.game.id}
-                  className="relative rounded-xl overflow-hidden border border-white/10 hover:border-[#00D1FF]/50 transition-all group"
+                  className="relative rounded-xl overflow-hidden border border-white/10 hover:border-[#34D399]/50 transition-all group"
                 >
                   <div className="relative aspect-[3/4]">
                     <Image
@@ -368,7 +368,7 @@ export default function QuizPage() {
             </button>
             <Link
               href="/app/profile"
-              className="px-6 py-3 rounded-xl bg-[#00D1FF] text-black font-semibold hover:bg-[#00D1FF]/90 transition-colors flex items-center gap-2"
+              className="px-6 py-3 rounded-xl bg-[#F97316] text-[#0B0F19] font-semibold hover:bg-[#F97316]/90 transition-colors flex items-center gap-2"
             >
               Voir mon profil
               <ArrowRight className="w-4 h-4" />
@@ -389,12 +389,12 @@ export default function QuizPage() {
             <span className="text-white/60">
               Question {currentIndex + 1} sur {questions.length}
             </span>
-            <span className="text-[#00D1FF] font-medium">{Math.round(progress)}%</span>
+            <span className="text-[#34D399] font-medium">{Math.round(progress)}%</span>
           </div>
           <ProgressBar value={progress} size="lg" />
         </div>
 
-        <Card glow glowColor="#00D1FF" className="overflow-hidden">
+        <Card glow glowColor="#34D399" className="overflow-hidden">
           {/* Image de contexte */}
           {currentQuestion?.image && (
             <div className="relative h-48 md:h-64">
@@ -404,7 +404,7 @@ export default function QuizPage() {
                 fill
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F19] via-transparent to-transparent" />
               <div className="absolute bottom-4 left-4">
                 <Badge variant="info">{currentQuestion.context}</Badge>
               </div>
@@ -426,7 +426,7 @@ export default function QuizPage() {
                     onClick={() => handleAnswer(option.id)}
                     className={`w-full p-4 rounded-xl text-left transition-all duration-300 ${
                       isSelected
-                        ? "bg-[#00D1FF]/20 border-2 border-[#00D1FF] shadow-lg shadow-[#00D1FF]/20"
+                        ? "bg-[#34D399]/20 border-2 border-[#34D399] shadow-lg shadow-[#34D399]/20"
                         : "bg-white/5 border-2 border-white/10 hover:border-white/30 hover:bg-white/10"
                     }`}
                   >
@@ -434,13 +434,13 @@ export default function QuizPage() {
                       <div
                         className={`w-6 h-6 rounded-full border-2 flex items-center justify-center shrink-0 ${
                           isSelected
-                            ? "border-[#00D1FF] bg-[#00D1FF]"
+                            ? "border-[#34D399] bg-[#34D399]"
                             : "border-white/30"
                         }`}
                       >
                         {isSelected && <Check className="w-4 h-4 text-black" />}
                       </div>
-                      <span className={isSelected ? "text-[#00D1FF]" : "text-white/80"}>
+                      <span className={isSelected ? "text-[#34D399]" : "text-white/80"}>
                         {option.text}
                       </span>
                     </div>
@@ -465,7 +465,7 @@ export default function QuizPage() {
                 disabled={!currentAnswer}
                 className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all ${
                   currentAnswer
-                    ? "bg-[#00D1FF] text-black hover:bg-[#00D1FF]/90"
+                    ? "bg-[#34D399] text-black hover:bg-[#34D399]/90"
                     : "bg-white/10 text-white/40 cursor-not-allowed"
                 }`}
               >

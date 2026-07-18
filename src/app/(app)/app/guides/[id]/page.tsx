@@ -191,7 +191,7 @@ export default function GuidePage() {
               </p>
               <button
                 onClick={() => goToStep(currentStepIndex)}
-                className="w-full mt-4 py-3 rounded-xl bg-[#00D1FF] text-black font-semibold flex items-center justify-center gap-2 hover:bg-[#00D1FF]/90 transition-colors"
+                className="w-full mt-4 py-3 rounded-xl bg-[#34D399] text-black font-semibold flex items-center justify-center gap-2 hover:bg-[#34D399]/90 transition-colors"
               >
                 <Play className="w-4 h-4" />
                 {guide.progress === 100 ? "Revoir" : guide.progress > 0 ? "Continuer" : "Commencer"}
@@ -241,7 +241,7 @@ export default function GuidePage() {
                 onClick={() => setActiveTab("content")}
                 className={`flex-1 py-2 rounded-lg text-sm font-medium transition-all ${
                   activeTab === "content"
-                    ? "bg-[#00D1FF]/15 text-[#00D1FF]"
+                    ? "bg-[#34D399]/15 text-[#34D399]"
                     : "text-white/60"
                 }`}
               >
@@ -251,7 +251,7 @@ export default function GuidePage() {
                 onClick={() => setActiveTab("steps")}
                 className={`flex-1 py-2 rounded-lg text-sm font-medium transition-all ${
                   activeTab === "steps"
-                    ? "bg-[#00D1FF]/15 text-[#00D1FF]"
+                    ? "bg-[#34D399]/15 text-[#34D399]"
                     : "text-white/60"
                 }`}
               >
@@ -272,7 +272,7 @@ export default function GuidePage() {
                   />
                   {currentStep.type === "video" && (
                     <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-                      <button className="w-20 h-20 rounded-full bg-[#00D1FF] flex items-center justify-center hover:scale-110 transition-transform shadow-2xl shadow-[#00D1FF]/30">
+                      <button className="w-20 h-20 rounded-full bg-[#34D399] flex items-center justify-center hover:scale-110 transition-transform shadow-2xl shadow-[#34D399]/30">
                         <Play className="w-8 h-8 text-black ml-1" />
                       </button>
                     </div>
@@ -301,13 +301,13 @@ export default function GuidePage() {
                     {stepContent?.keyPoints && stepContent.keyPoints.length > 0 && (
                       <>
                         <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                          <Target className="w-5 h-5 text-[#00D1FF]" />
+                          <Target className="w-5 h-5 text-[#34D399]" />
                           Points clés
                         </h3>
                         <ul className="space-y-3 mb-8">
                           {stepContent.keyPoints.map((point, i) => (
                             <li key={i} className="flex items-start gap-3 text-white/70">
-                              <ChevronRight className="w-5 h-5 text-[#00D1FF] shrink-0 mt-0.5" />
+                              <ChevronRight className="w-5 h-5 text-[#34D399] shrink-0 mt-0.5" />
                               <span>
                                 <strong className="text-white">{point.title}</strong>
                                 {point.description && ` : ${point.description}`}
@@ -368,7 +368,7 @@ export default function GuidePage() {
                       <button
                         onClick={() => void handleNextStep()}
                         disabled={savingProgress}
-                        className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#00D1FF] text-black font-semibold hover:bg-[#00D1FF]/90 transition-colors"
+                        className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#34D399] text-black font-semibold hover:bg-[#34D399]/90 transition-colors"
                       >
                         {currentStep.completed ? "Étape suivante" : "Marquer et continuer"}
                         <ArrowRight className="w-4 h-4" />
@@ -391,9 +391,9 @@ export default function GuidePage() {
 
           {/* Liste des étapes */}
           <div className={`space-y-4 ${activeTab === "steps" ? "block" : "hidden lg:block"}`}>
-            <Card glow glowColor="#00D1FF" className="p-5">
+            <Card glow glowColor="#34D399" className="p-5">
               <h3 className="font-semibold mb-4 flex items-center gap-2">
-                <BookOpen className="w-5 h-5 text-[#00D1FF]" />
+                <BookOpen className="w-5 h-5 text-[#34D399]" />
                 Programme du guide
               </h3>
               <div className="space-y-2 max-h-[500px] overflow-y-auto pr-2">
@@ -405,7 +405,7 @@ export default function GuidePage() {
                       onClick={() => goToStep(index)}
                       className={`w-full flex items-center gap-3 p-3 rounded-xl cursor-pointer transition-all text-left ${
                         isCurrent
-                          ? "bg-[#00D1FF]/15 border border-[#00D1FF]/30"
+                          ? "bg-[#34D399]/15 border border-[#34D399]/30"
                           : step.completed
                           ? "bg-white/5 hover:bg-white/10"
                           : "opacity-60 hover:opacity-80"
@@ -417,7 +417,7 @@ export default function GuidePage() {
                           step.completed
                             ? "bg-[#10B981]/20 text-[#10B981]"
                             : isCurrent
-                            ? "bg-[#00D1FF]/20 text-[#00D1FF]"
+                            ? "bg-[#34D399]/20 text-[#34D399]"
                             : "bg-white/10 text-white/40"
                         }`}
                       >
@@ -432,7 +432,7 @@ export default function GuidePage() {
                       <div className="flex-1 min-w-0">
                         <p
                           className={`text-sm font-medium truncate ${
-                            isCurrent ? "text-[#00D1FF]" : ""
+                            isCurrent ? "text-[#34D399]" : ""
                           }`}
                         >
                           {step.title}

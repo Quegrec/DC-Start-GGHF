@@ -157,7 +157,7 @@ const archetypes: Archetype[] = [
     id: "socializer",
     name: "Le Social",
     icon: "🎉",
-    color: "#00D1FF",
+    color: "#34D399",
     trait: "Connexion & Partage",
     shortDescription: "Le jeu est avant tout un moment de partage avec les autres.",
     longDescription: "Pour vous, jouer seul n'a pas le même charme. Vous brillez dans les interactions sociales, que ce soit en coop, en guilde ou simplement en discutant sur Discord. Les amitiés gaming sont de vraies amitiés.",

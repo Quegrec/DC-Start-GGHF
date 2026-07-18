@@ -289,16 +289,16 @@ export function GamingDNA() {
 
   if (loading) {
     return (
-      <Card glow glowColor="#00D1FF" className="p-6">
+      <Card glow glowColor="#34D399" className="p-6">
         <div className="flex items-center justify-center h-48">
-          <Loader2 className="w-8 h-8 animate-spin text-[#00D1FF]" />
+          <Loader2 className="w-8 h-8 animate-spin text-[#34D399]" />
         </div>
       </Card>
     );
   }
 
   return (
-    <Card glow glowColor="#00D1FF" className="p-6">
+    <Card glow glowColor="#34D399" className="p-6">
       <Collapsible open={isOpen} onOpenChange={setIsOpen}>
         <div className="flex items-start justify-between gap-4">
           <div className="flex-1 min-w-0">
@@ -311,7 +311,7 @@ export function GamingDNA() {
               onClick={() => (editMode ? cancelEdit() : startEdit())}
               className={`w-9 h-9 rounded-lg border flex items-center justify-center transition-colors ${
                 editMode
-                  ? "border-[#00D1FF]/40 bg-[#00D1FF]/15 hover:bg-[#00D1FF]/20"
+                  ? "border-[#34D399]/40 bg-[#34D399]/15 hover:bg-[#34D399]/20"
                   : "border-white/15 bg-white/5 hover:bg-white/10"
               }`}
               aria-label={editMode ? "Quitter le mode édition" : "Modifier mes préférences ADN"}
@@ -379,7 +379,7 @@ export function GamingDNA() {
                   onClick={editMode ? () => togglePlatform(platform.name) : undefined}
                   className={`px-4 py-2 rounded-xl border transition-all duration-300 flex items-center gap-2 ${
                     platform.active
-                      ? "bg-[#00D1FF]/10 border-[#00D1FF]/30 text-[#00D1FF]"
+                      ? "bg-[#34D399]/10 border-[#34D399]/30 text-[#34D399]"
                       : "bg-white/5 border-white/10 text-white/50 hover:text-white/70"
                   } ${editMode ? "cursor-pointer" : "cursor-default"}`}
                 >
@@ -414,7 +414,7 @@ export function GamingDNA() {
                     value={newPlatform}
                     onChange={(e) => setNewPlatform(e.target.value)}
                     placeholder="Ajouter une plateforme (liste uniforme)"
-                    className="flex-1 h-10 rounded-xl bg-white/5 border border-white/10 px-3 text-sm outline-none focus:border-[#00D1FF]/40"
+                    className="flex-1 h-10 rounded-xl bg-white/5 border border-white/10 px-3 text-sm outline-none focus:border-[#34D399]/40"
                   />
                   <datalist id="catalog-platforms">
                     {availableCatalogPlatforms.map((name) => (
@@ -424,7 +424,7 @@ export function GamingDNA() {
                   <button
                     type="button"
                     onClick={addPlatform}
-                    className="h-10 px-3 rounded-xl bg-[#00D1FF]/15 border border-[#00D1FF]/30 text-[#00D1FF] hover:bg-[#00D1FF]/20 flex items-center gap-2"
+                    className="h-10 px-3 rounded-xl bg-[#34D399]/15 border border-[#34D399]/30 text-[#34D399] hover:bg-[#34D399]/20 flex items-center gap-2"
                   >
                     <Plus className="w-4 h-4" />
                     Ajouter
@@ -436,7 +436,7 @@ export function GamingDNA() {
                       key={name}
                       type="button"
                       onClick={() => addPlatformFromCatalog(name)}
-                      className="px-2.5 py-1 rounded-lg text-xs bg-white/5 border border-white/10 hover:border-[#00D1FF]/30"
+                      className="px-2.5 py-1 rounded-lg text-xs bg-white/5 border border-white/10 hover:border-[#34D399]/30"
                     >
                       + {name}
                     </button>
@@ -496,7 +496,7 @@ export function GamingDNA() {
                     value={newGenre}
                     onChange={(e) => setNewGenre(e.target.value)}
                     placeholder="Ajouter un genre (liste uniforme)"
-                    className="flex-1 h-10 rounded-xl bg-white/5 border border-white/10 px-3 text-sm outline-none focus:border-[#00D1FF]/40"
+                    className="flex-1 h-10 rounded-xl bg-white/5 border border-white/10 px-3 text-sm outline-none focus:border-[#34D399]/40"
                   />
                   <datalist id="catalog-genres">
                     {availableCatalogGenres.map((name) => (
@@ -506,7 +506,7 @@ export function GamingDNA() {
                   <button
                     type="button"
                     onClick={addGenre}
-                    className="h-10 px-3 rounded-xl bg-[#00D1FF]/15 border border-[#00D1FF]/30 text-[#00D1FF] hover:bg-[#00D1FF]/20 flex items-center gap-2"
+                    className="h-10 px-3 rounded-xl bg-[#34D399]/15 border border-[#34D399]/30 text-[#34D399] hover:bg-[#34D399]/20 flex items-center gap-2"
                   >
                     <Plus className="w-4 h-4" />
                     Ajouter
@@ -518,7 +518,7 @@ export function GamingDNA() {
                       key={name}
                       type="button"
                       onClick={() => addGenreFromCatalog(name)}
-                      className="px-2.5 py-1 rounded-lg text-xs bg-white/5 border border-white/10 hover:border-[#00D1FF]/30"
+                      className="px-2.5 py-1 rounded-lg text-xs bg-white/5 border border-white/10 hover:border-[#34D399]/30"
                     >
                       + {name}
                     </button>
@@ -546,7 +546,7 @@ export function GamingDNA() {
                     value={newFavoriteGame}
                     onChange={(e) => setNewFavoriteGame(e.target.value)}
                     placeholder="Ajouter un jeu favori (RAWG)"
-                    className="flex-1 h-10 rounded-xl bg-white/5 border border-white/10 px-3 text-sm outline-none focus:border-[#00D1FF]/40"
+                    className="flex-1 h-10 rounded-xl bg-white/5 border border-white/10 px-3 text-sm outline-none focus:border-[#34D399]/40"
                   />
                   <button
                     type="button"
@@ -556,7 +556,7 @@ export function GamingDNA() {
                       );
                       if (exact) addFavoriteByGame(exact);
                     }}
-                    className="h-10 px-3 rounded-xl bg-[#00D1FF]/15 border border-[#00D1FF]/30 text-[#00D1FF] hover:bg-[#00D1FF]/20 flex items-center gap-2"
+                    className="h-10 px-3 rounded-xl bg-[#34D399]/15 border border-[#34D399]/30 text-[#34D399] hover:bg-[#34D399]/20 flex items-center gap-2"
                   >
                     <Plus className="w-4 h-4" />
                     Ajouter
@@ -597,12 +597,12 @@ export function GamingDNA() {
                         onClick={() => toggleFavoriteGame(pg.game.id)}
                         className={`px-3 py-2 rounded-xl border flex items-center justify-between gap-3 text-sm transition-colors ${
                           checked
-                            ? "bg-[#00D1FF]/10 border-[#00D1FF]/30"
+                            ? "bg-[#34D399]/10 border-[#34D399]/30"
                             : "bg-white/5 border-white/10 hover:bg-white/8"
                         }`}
                       >
                         <span className="truncate">{pg.game.name}</span>
-                        <span className={`text-xs ${checked ? "text-[#00D1FF]" : "text-white/40"}`}>
+                        <span className={`text-xs ${checked ? "text-[#34D399]" : "text-white/40"}`}>
                           {checked ? "Favori" : "Ajouter"}
                         </span>
                       </button>
@@ -641,7 +641,7 @@ export function GamingDNA() {
             <div className="grid grid-cols-3 gap-3">
               {favoriteGames.map((pg, index) => (
                 <div key={pg.game.id} className="group relative">
-                  <div className="relative aspect-3/4 rounded-xl overflow-hidden border border-white/10 hover:border-[#00D1FF]/50 transition-all duration-300">
+                  <div className="relative aspect-3/4 rounded-xl overflow-hidden border border-white/10 hover:border-[#34D399]/50 transition-all duration-300">
                     <Image
                       src={pg.game.coverImage}
                       alt={pg.game.name}
@@ -651,10 +651,10 @@ export function GamingDNA() {
                     />
 
                     {/* Overlay */}
-                    <div className="absolute inset-0 bg-linear-to-t from-[#121212] via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-linear-to-t from-[#0B0F19] via-transparent to-transparent" />
 
                     {/* Badge de rang */}
-                    <div className="absolute top-2 left-2 w-8 h-8 rounded-lg bg-[#00D1FF]/90 backdrop-blur-sm border border-[#00D1FF]/30 flex items-center justify-center">
+                    <div className="absolute top-2 left-2 w-8 h-8 rounded-lg bg-[#34D399]/90 backdrop-blur-sm border border-[#34D399]/30 flex items-center justify-center">
                       <span className="font-bold text-sm">#{index + 1}</span>
                     </div>
 
@@ -689,7 +689,7 @@ export function GamingDNA() {
                 className={`h-10 px-4 rounded-xl flex items-center gap-2 font-semibold transition-colors ${
                   !isDirty || saving
                     ? "bg-white/10 text-white/40 cursor-not-allowed"
-                    : "bg-[#00D1FF] text-black hover:bg-[#00D1FF]/90"
+                    : "bg-[#34D399] text-black hover:bg-[#34D399]/90"
                 }`}
               >
                 <Save className="w-4 h-4" />

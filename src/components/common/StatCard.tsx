@@ -11,7 +11,7 @@ export function StatCard({
   icon: Icon,
   value,
   label,
-  color = "#00D1FF",
+  color = "#34D399",
 }: StatCardProps) {
   return (
     <div className="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 transition-colors">

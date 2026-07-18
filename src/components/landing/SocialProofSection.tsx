@@ -32,7 +32,7 @@ export function SocialProofSection() {
       icon: Star,
       name: "Maîtrise",
       description: "Terminez un guide",
-      color: "#00D1FF",
+      color: "#34D399",
     },
   ];
 
@@ -40,20 +40,20 @@ export function SocialProofSection() {
     <section id="community" className="relative py-32 px-6">
       {/* Background */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00D1FF]/20 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#34D399]/20 to-transparent" />
       </div>
 
       <div className="relative max-w-6xl mx-auto">
         {/* Section header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#00D1FF]/10 border border-[#00D1FF]/20 mb-6">
-            <Users className="w-4 h-4 text-[#00D1FF]" />
-            <span className="text-sm text-[#00D1FF]">Communauté</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#34D399]/10 border border-[#34D399]/20 mb-6">
+            <Users className="w-4 h-4 text-[#34D399]" />
+            <span className="text-sm text-[#34D399]">Communauté</span>
           </div>
 
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Rejoignez la{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00D1FF] to-[#10B981]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#34D399] to-[#10B981]">
               guilde
             </span>
           </h2>
@@ -75,10 +75,10 @@ export function SocialProofSection() {
                 key={index}
                 className="text-center p-8 rounded-3xl bg-gradient-to-b from-white/[0.03] to-transparent border border-white/5"
               >
-                <div className="w-14 h-14 rounded-2xl bg-[#00D1FF]/10 flex items-center justify-center mx-auto mb-4">
-                  <Icon className="w-7 h-7 text-[#00D1FF]" />
+                <div className="w-14 h-14 rounded-2xl bg-[#34D399]/10 flex items-center justify-center mx-auto mb-4">
+                  <Icon className="w-7 h-7 text-[#34D399]" />
                 </div>
-                <div className="text-4xl font-bold text-[#00D1FF] mb-2">
+                <div className="text-4xl font-bold text-[#34D399] mb-2">
                   {stat.value}
                 </div>
                 <div className="text-white/50">{stat.label}</div>

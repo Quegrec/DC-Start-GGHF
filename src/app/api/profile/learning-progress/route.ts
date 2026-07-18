@@ -7,7 +7,7 @@ import { learningProgressResponseSchema } from "@/server/schemas/learning-progre
 import { getGuidesForUser } from "@/server/services/guides-progress.service";
 
 const CATEGORY_COLORS: Record<string, string> = {
-  "Mécanique": "#00D1FF",
+  "Mécanique": "#34D399",
   "Stratégie": "#8B5CF6",
   Social: "#10B981",
   Communication: "#10B981",

@@ -10,7 +10,7 @@ const variantStyles = {
   success: "bg-[#10B981]/20 text-[#10B981]",
   warning: "bg-[#F59E0B]/20 text-[#F59E0B]",
   danger: "bg-[#EF4444]/20 text-[#EF4444]",
-  info: "bg-[#00D1FF]/20 text-[#00D1FF]",
+  info: "bg-[#34D399]/20 text-[#34D399]",
 };
 
 const sizeStyles = {

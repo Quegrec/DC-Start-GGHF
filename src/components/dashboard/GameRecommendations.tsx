@@ -82,7 +82,7 @@ export function GameRecommendations() {
   ];
 
   const GameCard = ({ game }: { game: Game }) => (
-    <div className="group relative rounded-2xl overflow-hidden bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 hover:border-[#00D1FF]/50 transition-all duration-300 cursor-pointer">
+    <div className="group relative rounded-2xl overflow-hidden bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 hover:border-[#34D399]/50 transition-all duration-300 cursor-pointer">
       {/* Couverture du jeu */}
       <div className="relative aspect-[3/4] overflow-hidden">
         <Image
@@ -94,7 +94,7 @@ export function GameRecommendations() {
         />
 
         {/* Dégradé de superposition */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F19] via-[#0B0F19]/60 to-transparent" />
 
         {/* Badge de notation */}
         {game.rating && (
@@ -105,7 +105,7 @@ export function GameRecommendations() {
         )}
 
         {/* Score de compatibilité - Mis en avant */}
-        <div className="absolute top-3 right-3 px-3 py-1.5 rounded-xl bg-[#00D1FF]/90 backdrop-blur-sm border border-[#00D1FF]/30 shadow-lg shadow-[#00D1FF]/30">
+        <div className="absolute top-3 right-3 px-3 py-1.5 rounded-xl bg-[#34D399]/90 backdrop-blur-sm border border-[#34D399]/30 shadow-lg shadow-[#34D399]/30">
           <div className="flex items-center gap-1.5">
             <Sparkles className="w-3.5 h-3.5" />
             <span className="text-xs font-bold">{game.matchScore}%</span>
@@ -115,14 +115,14 @@ export function GameRecommendations() {
 
       {/* Informations du jeu */}
       <div className="p-4">
-        <h3 className="font-semibold mb-2 group-hover:text-[#00D1FF] transition-colors">
+        <h3 className="font-semibold mb-2 group-hover:text-[#34D399] transition-colors">
           {game.title}
         </h3>
 
         {/* Description de la compatibilité */}
         <p className="text-xs text-white/50 mb-3">
           {game.matchScore}% de compatibilité avec votre archétype{" "}
-          <span className="text-[#00D1FF]">{game.archetype}</span>
+          <span className="text-[#34D399]">{game.archetype}</span>
         </p>
 
         {/* Tags de plateforme */}
@@ -136,7 +136,7 @@ export function GameRecommendations() {
       </div>
 
       {/* Effet de survol lumineux */}
-      <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none shadow-lg shadow-[#00D1FF]/10" />
+      <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none shadow-lg shadow-[#34D399]/10" />
     </div>
   );
 
@@ -159,7 +159,7 @@ export function GameRecommendations() {
               Gameplay de haute précision qui correspond à votre style
             </p>
           </div>
-          <button className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-sm text-white/70 hover:bg-white/10 hover:border-[#00D1FF]/50 hover:text-white transition-all duration-300">
+          <button className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-sm text-white/70 hover:bg-white/10 hover:border-[#34D399]/50 hover:text-white transition-all duration-300">
             Voir tout
           </button>
         </div>
@@ -180,7 +180,7 @@ export function GameRecommendations() {
               Les titres les plus appréciés sur PlayStation 5
             </p>
           </div>
-          <button className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-sm text-white/70 hover:bg-white/10 hover:border-[#00D1FF]/50 hover:text-white transition-all duration-300">
+          <button className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-sm text-white/70 hover:bg-white/10 hover:border-[#34D399]/50 hover:text-white transition-all duration-300">
             Voir tout
           </button>
         </div>

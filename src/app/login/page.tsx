@@ -1,13 +1,13 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, Suspense, useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { ArrowRight, Lock, Mail } from "lucide-react";
 import { Card } from "@/components/common";
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [email, setEmail] = useState("");
@@ -62,9 +62,9 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#0a0a0a] text-white pt-28 pb-16">
+    <main className="min-h-screen bg-[#0B0F19] text-white pt-28 pb-16">
       <div className="max-w-md mx-auto px-6">
-        <Card glow glowColor="#00D1FF" className="p-7 sm:p-8">
+        <Card glow glowColor="#34D399" className="p-7 sm:p-8">
           <div className="mb-6">
             <h1 className="text-3xl font-bold">Connexion</h1>
             <p className="text-sm text-white/60 mt-2">
@@ -81,7 +81,7 @@ export default function LoginPage() {
           <form onSubmit={handleSubmit} className="space-y-4">
             <label className="block">
               <span className="text-sm text-white/70 mb-2 inline-flex items-center gap-2">
-                <Mail className="w-4 h-4 text-[#00D1FF]" />
+                <Mail className="w-4 h-4 text-[#34D399]" />
                 Email
               </span>
               <input
@@ -89,13 +89,13 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@example.com"
-                className="w-full h-11 px-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:border-[#00D1FF]/50"
+                className="w-full h-11 px-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:border-[#34D399]/50"
               />
             </label>
 
             <label className="block">
               <span className="text-sm text-white/70 mb-2 inline-flex items-center gap-2">
-                <Lock className="w-4 h-4 text-[#00D1FF]" />
+                <Lock className="w-4 h-4 text-[#34D399]" />
                 Mot de passe
               </span>
               <input
@@ -103,7 +103,7 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="********"
-                className="w-full h-11 px-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:border-[#00D1FF]/50"
+                className="w-full h-11 px-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:border-[#34D399]/50"
               />
             </label>
 
@@ -112,7 +112,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={submitting}
-              className="w-full h-11 rounded-xl bg-[#00D1FF] text-black font-semibold hover:bg-[#00D1FF]/90 transition-colors disabled:opacity-70 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2"
+              className="w-full h-11 rounded-xl bg-[#34D399] text-black font-semibold hover:bg-[#34D399]/90 transition-colors disabled:opacity-70 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2"
             >
               {submitting ? "Connexion..." : "Se connecter"}
               <ArrowRight className="w-4 h-4" />
@@ -121,12 +121,20 @@ export default function LoginPage() {
 
           <div className="mt-6 text-sm text-white/60">
             Pas encore de compte ?{" "}
-            <Link href="/register" className="text-[#00D1FF] hover:underline">
+            <Link href="/register" className="text-[#34D399] hover:underline">
               Creer un compte
             </Link>
           </div>
         </Card>
       </div>
     </main>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={null}>
+      <LoginForm />
+    </Suspense>
   );
 }

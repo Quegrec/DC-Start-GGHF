@@ -54,13 +54,13 @@ function GuestHomepage() {
 
         {/* Hero de bienvenue */}
         <div className="text-center space-y-6 py-12">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#00D1FF]/10 border border-[#00D1FF]/20 text-[#00D1FF] text-sm font-medium mb-2">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#34D399]/10 border border-[#34D399]/20 text-[#34D399] text-sm font-medium mb-2">
             <Zap className="w-3.5 h-3.5" />
             Bienvenue sur GGHF
           </div>
           <h1 className="text-4xl md:text-5xl font-bold leading-tight">
             Découvre ton{" "}
-            <span className="text-[#00D1FF]">ADN de joueur</span>
+            <span className="text-[#34D399]">ADN de joueur</span>
           </h1>
           <p className="text-lg text-white/60 max-w-2xl mx-auto">
             Passe le test d&apos;archétype, accède à des guides adaptés à ton style de jeu
@@ -69,7 +69,7 @@ function GuestHomepage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
             <Link
               href="/app/quiz"
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-[#00D1FF] text-black font-semibold hover:bg-[#00D1FF]/90 transition-colors"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-[#34D399] text-black font-semibold hover:bg-[#34D399]/90 transition-colors"
             >
               <Brain className="w-5 h-5" />
               Passer le test gratuit
@@ -92,7 +92,7 @@ function GuestHomepage() {
             title="Test d'Archétype"
             description="Découvrez votre style de jeu unique en quelques minutes. Obtenez des recommandations personnalisées."
             ctaText="Commencer"
-            color="#00D1FF"
+            color="#34D399"
           />
           <FeatureCard
             href="/app/guides"
@@ -137,7 +137,7 @@ function GuestHomepage() {
           <div className="text-center mt-8">
             <Link
               href="/app/quiz"
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-[#00D1FF] text-black font-semibold hover:bg-[#00D1FF]/90 transition-colors"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-[#34D399] text-black font-semibold hover:bg-[#34D399]/90 transition-colors"
             >
               Commencer par le test
               <ArrowRight className="w-4 h-4" />
@@ -196,7 +196,7 @@ function AuthenticatedDashboard() {
       <main className="pt-24 pb-16">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-center h-64">
-            <Loader2 className="w-10 h-10 animate-spin text-[#00D1FF]" />
+            <Loader2 className="w-10 h-10 animate-spin text-[#34D399]" />
           </div>
         </div>
       </main>
@@ -229,7 +229,7 @@ function AuthenticatedDashboard() {
         <div className="flex items-start justify-between">
           <div>
             <h1 className="text-3xl font-bold mb-2">
-              Bienvenue, <span className="text-[#00D1FF]">{user?.username || "Joueur"}</span> 👋
+              Bienvenue, <span className="text-[#34D399]">{user?.username || "Joueur"}</span> 👋
             </h1>
             <p className="text-white/60">
               {hasArchetype
@@ -255,9 +255,9 @@ function AuthenticatedDashboard() {
 
         {/* Si pas d'archétype, CTA pour faire le test */}
         {!hasArchetype && (
-          <Card glow glowColor="#00D1FF" className="p-8">
+          <Card glow glowColor="#34D399" className="p-8">
             <div className="flex items-center gap-8">
-              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#00D1FF] to-[#8B5CF6] flex items-center justify-center shrink-0">
+              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#34D399] to-[#8B5CF6] flex items-center justify-center shrink-0">
                 <Brain className="w-10 h-10 text-white" />
               </div>
               <div className="flex-1">
@@ -268,7 +268,7 @@ function AuthenticatedDashboard() {
                 </p>
                 <Link
                   href="/app/quiz"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#00D1FF] text-black font-semibold hover:bg-[#00D1FF]/90 transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#34D399] text-black font-semibold hover:bg-[#34D399]/90 transition-colors"
                 >
                   Commencer le test
                   <ArrowRight className="w-4 h-4" />
@@ -284,7 +284,7 @@ function AuthenticatedDashboard() {
             icon={Brain}
             value={archetype?.name || "?"}
             label="Archétype"
-            color={archetype?.color || "#00D1FF"}
+            color={archetype?.color || "#34D399"}
           />
           <StatCard
             icon={BookOpen}
@@ -385,7 +385,7 @@ function AuthenticatedDashboard() {
               </div>
               <Link
                 href="/app/guides"
-                className="text-sm text-[#00D1FF] hover:underline flex items-center gap-1"
+                className="text-sm text-[#34D399] hover:underline flex items-center gap-1"
               >
                 Voir tous les guides
                 <ArrowRight className="w-4 h-4" />
@@ -408,7 +408,7 @@ function AuthenticatedDashboard() {
                         <ProgressBar value={guide.progress} size="sm" />
                       </div>
                     </div>
-                    <button className="w-full mt-4 py-2.5 rounded-xl bg-[#00D1FF]/20 text-[#00D1FF] font-medium text-sm flex items-center justify-center gap-2 hover:bg-[#00D1FF]/30 transition-colors">
+                    <button className="w-full mt-4 py-2.5 rounded-xl bg-[#34D399]/20 text-[#34D399] font-medium text-sm flex items-center justify-center gap-2 hover:bg-[#34D399]/30 transition-colors">
                       <Play className="w-4 h-4" />
                       Continuer
                     </button>
@@ -462,7 +462,7 @@ function AuthenticatedDashboard() {
                       fill
                       className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F19] to-transparent" />
                     <Badge variant="success" className="absolute top-3 right-3">
                       {rec.matchScore}% compatible
                     </Badge>
@@ -497,7 +497,7 @@ function AuthenticatedDashboard() {
                 : "Découvrez votre style de jeu unique et recevez des recommandations."
             }
             ctaText={hasArchetype ? "Refaire" : "Commencer"}
-            color="#00D1FF"
+            color="#34D399"
           />
           <FeatureCard
             href="/app/guides"
@@ -531,7 +531,7 @@ export default function DashboardPage() {
       <main className="pt-24 pb-16">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-center h-64">
-            <Loader2 className="w-10 h-10 animate-spin text-[#00D1FF]" />
+            <Loader2 className="w-10 h-10 animate-spin text-[#34D399]" />
           </div>
         </div>
       </main>

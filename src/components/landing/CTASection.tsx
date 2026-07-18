@@ -8,23 +8,23 @@ export function CTASection() {
     <section className="relative py-32 px-6">
       {/* Background glow */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#00D1FF]/10 rounded-full blur-[150px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#34D399]/10 rounded-full blur-[150px]" />
       </div>
 
       <div className="relative max-w-4xl mx-auto">
         {/* CTA Card */}
         <div className="relative rounded-[2.5rem] overflow-hidden">
           {/* Border gradient */}
-          <div className="absolute inset-0 rounded-[2.5rem] p-px bg-gradient-to-b from-[#00D1FF]/30 via-[#00D1FF]/10 to-transparent">
-            <div className="w-full h-full rounded-[2.5rem] bg-[#0a0a0a]" />
+          <div className="absolute inset-0 rounded-[2.5rem] p-px bg-gradient-to-b from-[#34D399]/30 via-[#34D399]/10 to-transparent">
+            <div className="w-full h-full rounded-[2.5rem] bg-[#0B0F19]" />
           </div>
 
           {/* Content */}
           <div className="relative p-12 md:p-16 text-center">
             {/* Floating badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#00D1FF]/10 border border-[#00D1FF]/20 mb-8">
-              <Sparkles className="w-4 h-4 text-[#00D1FF]" />
-              <span className="text-sm text-[#00D1FF]">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#34D399]/10 border border-[#34D399]/20 mb-8">
+              <Sparkles className="w-4 h-4 text-[#34D399]" />
+              <span className="text-sm text-[#34D399]">
                 Prêt à vous découvrir ?
               </span>
             </div>
@@ -32,7 +32,7 @@ export function CTASection() {
             {/* Headline */}
             <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
               Devenez le joueur que vous êtes{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00D1FF] to-[#10B981]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#34D399] to-[#10B981]">
                 vraiment
               </span>
             </h2>
@@ -46,7 +46,7 @@ export function CTASection() {
             {/* CTA Button */}
             <Link
               href="/app"
-              className="group inline-flex items-center gap-3 px-10 py-5 rounded-2xl bg-gradient-to-r from-[#00D1FF] to-[#00D1FF]/80 text-black font-semibold text-lg hover:shadow-2xl hover:shadow-[#00D1FF]/30 transition-all duration-300"
+              className="group inline-flex items-center gap-3 px-10 py-5 rounded-2xl bg-gradient-to-r from-[#F97316] to-[#FB923C] text-[#0B0F19] font-semibold text-lg hover:shadow-2xl hover:shadow-[#F97316]/30 transition-all duration-300"
             >
               Commencer le test gratuit
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -59,7 +59,7 @@ export function CTASection() {
           </div>
 
           {/* Decorative elements */}
-          <div className="absolute top-8 left-8 w-2 h-2 bg-[#00D1FF] rounded-full opacity-50" />
+          <div className="absolute top-8 left-8 w-2 h-2 bg-[#34D399] rounded-full opacity-50" />
           <div className="absolute top-12 right-12 w-3 h-3 bg-[#10B981] rounded-full opacity-30" />
           <div className="absolute bottom-16 left-16 w-2 h-2 bg-[#8B5CF6] rounded-full opacity-40" />
         </div>

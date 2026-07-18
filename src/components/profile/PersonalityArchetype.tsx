@@ -54,18 +54,18 @@ export function PersonalityArchetype() {
 
   if (loading) {
     return (
-      <Card glow glowColor="#00D1FF" className="p-10">
+      <Card glow glowColor="#34D399" className="p-10">
         <div className="flex items-center justify-center h-64">
-          <Loader2 className="w-8 h-8 animate-spin text-[#00D1FF]" />
+          <Loader2 className="w-8 h-8 animate-spin text-[#34D399]" />
         </div>
       </Card>
     );
   }
 
   return (
-    <Card glow glowColor="#00D1FF" className="p-10 relative overflow-hidden">
+    <Card glow glowColor="#34D399" className="p-10 relative overflow-hidden">
       {/* Effet de lumière subtil en haut */}
-      <div className="absolute top-0 left-0 right-0 h-24 bg-linear-to-b from-[#00D1FF]/10 to-transparent pointer-events-none" />
+      <div className="absolute top-0 left-0 right-0 h-24 bg-linear-to-b from-[#34D399]/10 to-transparent pointer-events-none" />
 
       <div className="text-center mb-8">
         <SectionHeader
@@ -80,10 +80,10 @@ export function PersonalityArchetype() {
         <div className="relative">
           {/* Fond lumineux cyan */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-80 h-80 rounded-full bg-[#00D1FF]/5 blur-3xl" />
+            <div className="w-80 h-80 rounded-full bg-[#34D399]/5 blur-3xl" />
           </div>
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-60 h-60 rounded-full bg-[#00D1FF]/10 blur-2xl" />
+            <div className="w-60 h-60 rounded-full bg-[#34D399]/10 blur-2xl" />
           </div>
 
           {/* Graphique */}
@@ -100,26 +100,26 @@ export function PersonalityArchetype() {
                   </filter>
                 </defs>
                 <PolarGrid
-                  stroke="#00D1FF40"
+                  stroke="#34D39940"
                   strokeWidth={1.5}
                   gridType="polygon"
                 />
                 <PolarAngleAxis
                   dataKey="trait"
                   tick={{ fill: "#ffffff", fontSize: 11, fontWeight: 600 }}
-                  stroke="#00D1FF50"
+                  stroke="#34D39950"
                 />
                 <PolarRadiusAxis
                   angle={90}
                   domain={[0, 100]}
-                  tick={{ fill: "#00D1FF80", fontSize: 10 }}
-                  stroke="#00D1FF30"
+                  tick={{ fill: "#34D39980", fontSize: 10 }}
+                  stroke="#34D39930"
                 />
                 <Radar
                   name="Traits de personnalité"
                   dataKey="value"
-                  stroke="#00D1FF"
-                  fill="#00D1FF"
+                  stroke="#34D399"
+                  fill="#34D399"
                   fillOpacity={0.3}
                   strokeWidth={3}
                   filter="url(#glow)"
@@ -131,7 +131,7 @@ export function PersonalityArchetype() {
           {/* Label central */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none">
             <div className="text-sm text-white/60 mb-1">Votre essence</div>
-            <div className="text-xl font-bold text-[#00D1FF]">
+            <div className="text-xl font-bold text-[#34D399]">
               {topTrait.trait}
             </div>
           </div>
@@ -151,14 +151,14 @@ export function PersonalityArchetype() {
                   <div className="flex items-center justify-between mb-2">
                     <span
                       className={`font-medium ${
-                        isTop ? "text-[#00D1FF]" : "text-white/80"
+                        isTop ? "text-[#34D399]" : "text-white/80"
                       }`}
                     >
                       {item.trait}
                     </span>
                     <span
                       className={`font-semibold ${
-                        isTop ? "text-[#00D1FF]" : "text-white/60"
+                        isTop ? "text-[#34D399]" : "text-white/60"
                       }`}
                     >
                       {item.value}%
@@ -169,7 +169,7 @@ export function PersonalityArchetype() {
                     <div
                       className={`h-full rounded-full transition-all duration-1000 ${
                         isTop
-                          ? "bg-linear-to-r from-[#00D1FF] to-[#00D1FF]/60 shadow-lg shadow-[#00D1FF]/30"
+                          ? "bg-linear-to-r from-[#34D399] to-[#34D399]/60 shadow-lg shadow-[#34D399]/30"
                           : "bg-linear-to-r from-white/40 to-white/20"
                       }`}
                       style={{ width: `${item.value}%` }}
@@ -181,31 +181,31 @@ export function PersonalityArchetype() {
           </div>
 
           {/* Carte d'analyse */}
-          <div className="p-6 rounded-2xl bg-linear-to-br from-[#00D1FF]/10 to-[#00D1FF]/5 border border-[#00D1FF]/30 relative overflow-hidden">
+          <div className="p-6 rounded-2xl bg-linear-to-br from-[#34D399]/10 to-[#34D399]/5 border border-[#34D399]/30 relative overflow-hidden">
             {/* Lueur subtile */}
-            <div className="absolute inset-0 bg-linear-to-br from-[#00D1FF]/5 to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-linear-to-br from-[#34D399]/5 to-transparent pointer-events-none" />
 
             <div className="relative">
               <div className="flex items-center gap-2 mb-3">
-                <div className="w-8 h-8 rounded-lg bg-[#00D1FF]/20 flex items-center justify-center">
-                  <Lightbulb className="w-4 h-4 text-[#00D1FF]" />
+                <div className="w-8 h-8 rounded-lg bg-[#34D399]/20 flex items-center justify-center">
+                  <Lightbulb className="w-4 h-4 text-[#34D399]" />
                 </div>
-                <h3 className="font-semibold text-[#00D1FF]">
+                <h3 className="font-semibold text-[#34D399]">
                   Analyse de personnalité
                 </h3>
               </div>
 
               <p className="text-sm text-white/80 leading-relaxed">
                 Votre profil est aligné sur l&apos;archétype{" "}
-                <span className="font-semibold text-[#00D1FF]">
+                <span className="font-semibold text-[#34D399]">
                   {user?.archetype?.name ?? "détecté"}
                 </span>{" "}
                 avec une dominante en{" "}
-                <span className="font-semibold text-[#00D1FF]">
+                <span className="font-semibold text-[#34D399]">
                   {secondTrait.trait.toLowerCase()}
                 </span>{" "}
                 ({secondTrait.value}%) et un pic sur{" "}
-                <span className="font-semibold text-[#00D1FF]">{topTrait.trait.toLowerCase()}</span>.
+                <span className="font-semibold text-[#34D399]">{topTrait.trait.toLowerCase()}</span>.
                 Le radar reflète directement votre résultat de quiz sauvegardé sur votre profil.
               </p>
             </div>
@@ -217,7 +217,7 @@ export function PersonalityArchetype() {
               icon={Brain}
               value={`${topTrait.value}%`}
               label="Trait dominant"
-              color="#00D1FF"
+              color="#34D399"
             />
             <StatCard
               icon={TrendingUp}

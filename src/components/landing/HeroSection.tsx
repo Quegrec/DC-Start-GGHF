@@ -11,21 +11,21 @@ export function HeroSection() {
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
-            backgroundImage: `linear-gradient(#00D1FF 1px, transparent 1px), linear-gradient(90deg, #00D1FF 1px, transparent 1px)`,
+            backgroundImage: `linear-gradient(#34D399 1px, transparent 1px), linear-gradient(90deg, #34D399 1px, transparent 1px)`,
             backgroundSize: "60px 60px",
           }}
         />
       </div>
 
       {/* Floating elements */}
-      <div className="absolute top-1/4 left-10 w-2 h-2 bg-[#00D1FF] rounded-full animate-pulse" />
-      <div className="absolute top-1/3 right-20 w-3 h-3 bg-[#00D1FF]/50 rounded-full animate-pulse delay-300" />
+      <div className="absolute top-1/4 left-10 w-2 h-2 bg-[#34D399] rounded-full animate-pulse" />
+      <div className="absolute top-1/3 right-20 w-3 h-3 bg-[#34D399]/50 rounded-full animate-pulse delay-300" />
       <div className="absolute bottom-1/3 left-1/4 w-2 h-2 bg-[#10B981] rounded-full animate-pulse delay-500" />
 
       <div className="relative max-w-5xl mx-auto px-6 text-center">
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-sm">
-          <Sparkles className="w-4 h-4 text-[#00D1FF]" />
+          <Sparkles className="w-4 h-4 text-[#34D399]" />
           <span className="text-sm text-white/70">
             +1 200 joueurs ont déjà trouvé leur voie
           </span>
@@ -37,10 +37,10 @@ export function HeroSection() {
           <span className="block mt-2">
             par{" "}
             <span className="relative">
-              <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-[#00D1FF] to-[#00D1FF]/70">
+              <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-[#34D399] to-[#34D399]/70">
                 défaut
               </span>
-              <span className="absolute bottom-2 left-0 right-0 h-3 bg-[#00D1FF]/20 -z-0 rounded" />
+              <span className="absolute bottom-2 left-0 right-0 h-3 bg-[#34D399]/20 -z-0 rounded" />
             </span>
             .
           </span>
@@ -50,7 +50,7 @@ export function HeroSection() {
         <p className="text-xl md:text-2xl text-white/50 max-w-3xl mx-auto mb-10 leading-relaxed font-light">
           <span className="text-white/80">GGHF</span> est le premier compagnon
           intelligent qui décode votre{" "}
-          <span className="text-[#00D1FF]">ADN de joueur</span>. Découvrez votre
+          <span className="text-[#34D399]">ADN de joueur</span>. Découvrez votre
           archétype, surmontez la frustration et maîtrisez vos jeux préférés.
         </p>
 
@@ -58,7 +58,7 @@ export function HeroSection() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
           <Link
             href="/app"
-            className="group px-8 py-4 rounded-2xl bg-gradient-to-r from-[#00D1FF] to-[#00D1FF]/80 text-black font-semibold text-lg hover:shadow-2xl hover:shadow-[#00D1FF]/25 transition-all duration-300 flex items-center gap-3"
+            className="group px-8 py-4 rounded-2xl bg-gradient-to-r from-[#F97316] to-[#FB923C] text-[#0B0F19] font-semibold text-lg hover:shadow-2xl hover:shadow-[#F97316]/30 transition-all duration-300 flex items-center gap-3"
           >
             Découvrir mon Archétype
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

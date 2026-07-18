@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { Providers } from "@/components/Providers";
 import "./globals.css";
 
@@ -8,9 +8,16 @@ const inter = Inter({
   display: "swap",
 });
 
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["500", "700", "800"],
+  display: "swap",
+  variable: "--font-display",
+});
+
 export const metadata: Metadata = {
   title: {
-    default: "GGHF - Gaming Growth & Happiness Framework",
+    default: "GGHF - Good Games & Have Fun",
     template: "%s | GGHF",
   },
   description:
@@ -18,14 +25,14 @@ export const metadata: Metadata = {
   keywords: ["gaming", "archétype", "guides", "progression", "communauté", "jeux vidéo"],
   authors: [{ name: "GGHF" }],
   openGraph: {
-    title: "GGHF - Gaming Growth & Happiness Framework",
+    title: "GGHF - Good Games & Have Fun",
     description: "Découvrez votre archétype de joueur et progressez avec des guides sur-mesure.",
     type: "website",
     locale: "fr_FR",
   },
   twitter: {
     card: "summary_large_image",
-    title: "GGHF - Gaming Growth & Happiness Framework",
+    title: "GGHF - Good Games & Have Fun",
     description: "Découvrez votre archétype de joueur et progressez avec des guides sur-mesure.",
   },
 };
@@ -36,8 +43,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
-      <body className={`${inter.className} min-h-screen bg-[#121212] text-white antialiased`} suppressHydrationWarning>
+    <html lang="fr" className="dark" suppressHydrationWarning>
+      <body className={`${inter.className} ${jakarta.variable} min-h-screen bg-[#0B0F19] text-white antialiased`} suppressHydrationWarning>
         <Providers>{children}</Providers>
       </body>
     </html>

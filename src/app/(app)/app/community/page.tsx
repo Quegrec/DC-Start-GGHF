@@ -104,7 +104,7 @@ export default function CommunityPage() {
       <main className="pt-24 pb-16">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-center h-64">
-            <Loader2 className="w-10 h-10 animate-spin text-[#00D1FF]" />
+            <Loader2 className="w-10 h-10 animate-spin text-[#34D399]" />
           </div>
         </div>
       </main>
@@ -137,7 +137,7 @@ export default function CommunityPage() {
             icon={Users}
             value="1,247"
             label="Membres actifs"
-            color="#00D1FF"
+            color="#34D399"
           />
           <StatCard
             icon={MessageCircle}
@@ -171,7 +171,7 @@ export default function CommunityPage() {
                   onClick={() => setActiveFilter(filter.key)}
                   className={`px-4 py-2 rounded-xl text-sm font-medium whitespace-nowrap transition-all ${
                     activeFilter === filter.key
-                      ? "bg-[#00D1FF]/20 text-[#00D1FF] border border-[#00D1FF]/30"
+                      ? "bg-[#34D399]/20 text-[#34D399] border border-[#34D399]/30"
                       : "bg-white/5 text-white/60 hover:bg-white/10"
                   }`}
                 >
@@ -183,15 +183,15 @@ export default function CommunityPage() {
             {/* Composer un post */}
             <Card className="p-4">
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-xl bg-[#00D1FF]/20 flex items-center justify-center shrink-0">
-                  <Users className="w-5 h-5 text-[#00D1FF]" />
+                <div className="w-10 h-10 rounded-xl bg-[#34D399]/20 flex items-center justify-center shrink-0">
+                  <Users className="w-5 h-5 text-[#34D399]" />
                 </div>
                 <input
                   type="text"
                   placeholder="Partagez quelque chose avec la communauté..."
-                  className="flex-1 h-10 px-4 rounded-xl bg-white/5 border border-white/10 text-sm placeholder:text-white/40 focus:outline-none focus:border-[#00D1FF]/50"
+                  className="flex-1 h-10 px-4 rounded-xl bg-white/5 border border-white/10 text-sm placeholder:text-white/40 focus:outline-none focus:border-[#34D399]/50"
                 />
-                <button className="w-10 h-10 rounded-xl bg-[#00D1FF] flex items-center justify-center hover:bg-[#00D1FF]/90 transition-colors">
+                <button className="w-10 h-10 rounded-xl bg-[#34D399] flex items-center justify-center hover:bg-[#34D399]/90 transition-colors">
                   <Send className="w-4 h-4 text-black" />
                 </button>
               </div>
@@ -289,7 +289,7 @@ export default function CommunityPage() {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Top membres */}
-            <Card glow glowColor="#00D1FF" className="p-5">
+            <Card glow glowColor="#34D399" className="p-5">
               <h3 className="font-semibold mb-4 flex items-center gap-2">
                 <Trophy className="w-5 h-5 text-[#F59E0B]" />
                 Top membres cette semaine
@@ -326,7 +326,7 @@ export default function CommunityPage() {
                         />
                       </div>
                       {member.isOnline && (
-                        <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-[#10B981] border-2 border-[#121212]" />
+                        <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-[#10B981] border-2 border-[#0B0F19]" />
                       )}
                     </div>
 
@@ -391,7 +391,7 @@ export default function CommunityPage() {
                       className={`w-full mt-3 py-2 rounded-xl text-sm font-medium transition-all ${
                         group.isJoined
                           ? "bg-white/10 text-white/60 hover:bg-white/15"
-                          : "bg-[#00D1FF]/20 text-[#00D1FF] hover:bg-[#00D1FF]/30"
+                          : "bg-[#34D399]/20 text-[#34D399] hover:bg-[#34D399]/30"
                       }`}
                     >
                       {group.isJoined ? "Membre ✓" : "Rejoindre"}

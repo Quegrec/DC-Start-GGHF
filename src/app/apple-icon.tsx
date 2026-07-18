@@ -12,7 +12,7 @@ export default function AppleIcon() {
       <div
         style={{
           fontSize: 72,
-          background: "linear-gradient(135deg, #00D1FF 0%, #0099CC 100%)",
+          background: "linear-gradient(135deg, #34D399 0%, #0099CC 100%)",
           width: "100%",
           height: "100%",
           display: "flex",
@@ -22,7 +22,7 @@ export default function AppleIcon() {
           color: "#000",
           fontWeight: 900,
           fontFamily: "system-ui, sans-serif",
-          boxShadow: "0 8px 32px rgba(0, 209, 255, 0.3)",
+          boxShadow: "0 8px 32px rgba(52, 211, 153, 0.3)",
         }}
       >
         GG

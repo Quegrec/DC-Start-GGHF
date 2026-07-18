@@ -11,7 +11,7 @@ export function Card({
   className = "",
   hover = false,
   glow = false,
-  glowColor = "#00D1FF",
+  glowColor = "#34D399",
 }: CardProps) {
   return (
     <div

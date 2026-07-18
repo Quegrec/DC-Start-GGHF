@@ -23,12 +23,12 @@ function Logo() {
     <Link href="/" className="group flex items-center">
       <div className="relative flex items-center">
         {/* Carré lumineux */}
-        <div className="w-10 h-10 rounded-xl bg-[#00D1FF] flex items-center justify-center shadow-lg shadow-[#00D1FF]/30 group-hover:shadow-[#00D1FF]/50 transition-all duration-300">
+        <div className="w-10 h-10 rounded-xl bg-[#34D399] flex items-center justify-center shadow-lg shadow-[#34D399]/30 group-hover:shadow-[#34D399]/50 transition-all duration-300">
           <span className="font-black text-base text-black tracking-tight">GG</span>
         </div>
         {/* Texte HF à côté */}
         <span className="ml-1.5 text-lg font-bold text-white/90 tracking-tight">
-          HF<span className="text-[#00D1FF]">.</span>
+          HF<span className="text-[#34D399]">.</span>
         </span>
       </div>
     </Link>
@@ -88,7 +88,7 @@ function LandingNav() {
             </Link>
             <Link
               href="/app/quiz"
-              className="px-6 py-2.5 rounded-full bg-[#00D1FF] text-black font-semibold text-sm hover:bg-white hover:shadow-xl hover:shadow-[#00D1FF]/20 transition-all duration-300"
+              className="px-6 py-2.5 rounded-full bg-[#34D399] text-black font-semibold text-sm hover:bg-white hover:shadow-xl hover:shadow-[#34D399]/20 transition-all duration-300"
             >
               Commencer
             </Link>
@@ -148,13 +148,13 @@ function AppNav() {
                     href={item.href}
                     className={`relative px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
                       isActive
-                        ? "text-[#00D1FF]"
+                        ? "text-[#34D399]"
                         : "text-white/50 hover:text-white"
                     }`}
                   >
                     {/* Fond actif avec animation */}
                     {isActive && (
-                      <span className="absolute inset-0 rounded-full bg-[#00D1FF]/10 border border-[#00D1FF]/20" />
+                      <span className="absolute inset-0 rounded-full bg-[#34D399]/10 border border-[#34D399]/20" />
                     )}
                     <span className="relative flex items-center gap-2">
                       {Icon && <Icon className="w-4 h-4" />}
@@ -176,7 +176,7 @@ function AppNav() {
                   placeholder="Rechercher..."
                   autoFocus
                   onBlur={() => setSearchOpen(false)}
-                  className="w-52 h-10 pl-4 pr-4 rounded-full bg-white/[0.08] border border-white/[0.12] text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-[#00D1FF]/40 focus:bg-white/[0.12] transition-all"
+                  className="w-52 h-10 pl-4 pr-4 rounded-full bg-white/[0.08] border border-white/[0.12] text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-[#34D399]/40 focus:bg-white/[0.12] transition-all"
                 />
               </div>
             ) : (
@@ -192,7 +192,7 @@ function AppNav() {
             {status === "unauthenticated" ? (
               <Link
                 href="/login"
-                className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#00D1FF] text-black text-sm font-semibold hover:bg-[#00D1FF]/90 transition-all duration-300"
+                className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#34D399] text-black text-sm font-semibold hover:bg-[#34D399]/90 transition-all duration-300"
               >
                 <LogIn className="w-4 h-4" />
                 <span className="hidden sm:inline">Connexion</span>
@@ -203,7 +203,7 @@ function AppNav() {
                   href="/app/profile"
                   className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
                     pathname === "/app/profile"
-                      ? "bg-[#00D1FF]/15 text-[#00D1FF] border border-[#00D1FF]/30"
+                      ? "bg-[#34D399]/15 text-[#34D399] border border-[#34D399]/30"
                       : "bg-white/[0.05] border border-white/[0.08] text-white/50 hover:text-white hover:bg-white/[0.1] hover:border-white/[0.15]"
                   }`}
                 >

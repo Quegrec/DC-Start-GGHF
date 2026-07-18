@@ -29,9 +29,9 @@ export function ProfileHeader() {
 
   if (loading) {
     return (
-      <Card glow glowColor="#00D1FF" className="p-8">
+      <Card glow glowColor="#34D399" className="p-8">
         <div className="flex items-center justify-center h-32">
-          <Loader2 className="w-8 h-8 animate-spin text-[#00D1FF]" />
+          <Loader2 className="w-8 h-8 animate-spin text-[#34D399]" />
         </div>
       </Card>
     );
@@ -39,7 +39,7 @@ export function ProfileHeader() {
 
   if (!user) {
     return (
-      <Card glow glowColor="#00D1FF" className="p-8">
+      <Card glow glowColor="#34D399" className="p-8">
         <div className="text-center text-white/60">
           Impossible de charger le profil
         </div>
@@ -50,11 +50,11 @@ export function ProfileHeader() {
   const xpProgress = (user.xp / user.xpToNextLevel) * 100;
 
   return (
-    <Card glow glowColor="#00D1FF" className="p-8">
+    <Card glow glowColor="#34D399" className="p-8">
       <div className="flex items-start gap-8">
         {/* Avatar */}
         <div className="relative flex-shrink-0">
-          <div className="w-32 h-32 rounded-2xl overflow-hidden border-2 border-[#00D1FF]/30 shadow-lg shadow-[#00D1FF]/20 relative">
+          <div className="w-32 h-32 rounded-2xl overflow-hidden border-2 border-[#34D399]/30 shadow-lg shadow-[#34D399]/20 relative">
             <Image
               src={avatarSrc}
               alt={`Avatar de ${user.username}`}
@@ -65,7 +65,7 @@ export function ProfileHeader() {
           </div>
 
           {/* Badge de niveau */}
-          <div className="absolute -bottom-2 -right-2 w-12 h-12 rounded-xl bg-gradient-to-br from-[#00D1FF] to-[#00D1FF]/60 flex items-center justify-center border-2 border-[#121212] shadow-lg shadow-[#00D1FF]/40">
+          <div className="absolute -bottom-2 -right-2 w-12 h-12 rounded-xl bg-gradient-to-br from-[#34D399] to-[#34D399]/60 flex items-center justify-center border-2 border-[#0B0F19] shadow-lg shadow-[#34D399]/40">
             <div className="text-center">
               <Crown className="w-4 h-4 mx-auto mb-0.5" />
               <span className="text-xs font-bold">{user.level}</span>
@@ -94,13 +94,13 @@ export function ProfileHeader() {
             <div className="flex items-center gap-3">
               <Link
                 href="/app/quiz"
-                className="px-5 py-2.5 rounded-2xl bg-gradient-to-r from-[#00D1FF]/20 to-[#00D1FF]/10 border border-[#00D1FF]/30 text-[#00D1FF] hover:from-[#00D1FF]/30 hover:to-[#00D1FF]/20 hover:shadow-lg hover:shadow-[#00D1FF]/20 transition-all duration-300 flex items-center gap-2"
+                className="px-5 py-2.5 rounded-2xl bg-gradient-to-r from-[#34D399]/20 to-[#34D399]/10 border border-[#34D399]/30 text-[#34D399] hover:from-[#34D399]/30 hover:to-[#34D399]/20 hover:shadow-lg hover:shadow-[#34D399]/20 transition-all duration-300 flex items-center gap-2"
               >
                 <RotateCcw className="w-4 h-4" />
                 <span>Refaire le test</span>
               </Link>
 
-              <button className="w-11 h-11 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 hover:border-[#00D1FF]/50 transition-all duration-300">
+              <button className="w-11 h-11 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 hover:border-[#34D399]/50 transition-all duration-300">
                 <Settings className="w-5 h-5 text-white/60" />
               </button>
             </div>
@@ -110,7 +110,7 @@ export function ProfileHeader() {
           <div className="space-y-2">
             <div className="flex items-center justify-between text-sm">
               <span className="text-white/70">Progression niveau {user.level}</span>
-              <span className="text-[#00D1FF] font-semibold">
+              <span className="text-[#34D399] font-semibold">
                 {user.xp.toLocaleString("fr-FR")} / {user.xpToNextLevel.toLocaleString("fr-FR")} XP
               </span>
             </div>

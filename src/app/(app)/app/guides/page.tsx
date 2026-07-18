@@ -87,7 +87,7 @@ export default function GuidesPage() {
             icon={BookOpen}
             value={stats.total}
             label="Guides disponibles"
-            color="#00D1FF"
+            color="#34D399"
           />
           <StatCard
             icon={CheckCircle2}
@@ -119,7 +119,7 @@ export default function GuidesPage() {
               placeholder="Rechercher un guide ou un jeu..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full h-12 pl-12 pr-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:border-[#00D1FF]/50 transition-colors"
+              className="w-full h-12 pl-12 pr-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:border-[#34D399]/50 transition-colors"
             />
           </div>
 
@@ -136,7 +136,7 @@ export default function GuidesPage() {
                 onClick={() => setFilter(tab.key as typeof filter)}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   filter === tab.key
-                    ? "bg-[#00D1FF]/20 text-[#00D1FF] border border-[#00D1FF]/30"
+                    ? "bg-[#34D399]/20 text-[#34D399] border border-[#34D399]/30"
                     : "text-white/60 hover:text-white hover:bg-white/5"
                 }`}
               >
@@ -171,7 +171,7 @@ export default function GuidesPage() {
               </div>
 
               {/* Titre et description */}
-              <h3 className="text-lg font-semibold mb-2 group-hover:text-[#00D1FF] transition-colors">
+              <h3 className="text-lg font-semibold mb-2 group-hover:text-[#34D399] transition-colors">
                 {guide.title}
               </h3>
               <p className="text-sm text-white/50 mb-4 line-clamp-2">
@@ -193,7 +193,7 @@ export default function GuidesPage() {
               {/* Progression */}
               <ProgressBar
                 value={guide.progress}
-                color={guide.progress === 100 ? "#10B981" : "#00D1FF"}
+                color={guide.progress === 100 ? "#10B981" : "#34D399"}
               />
 
               {/* Bouton d'action */}
@@ -203,8 +203,8 @@ export default function GuidesPage() {
                   guide.progress === 100
                     ? "bg-white/5 text-white/60 hover:bg-white/10"
                     : guide.progress > 0
-                    ? "bg-[#00D1FF]/20 text-[#00D1FF] hover:bg-[#00D1FF]/30"
-                    : "bg-[#00D1FF] text-black hover:bg-[#00D1FF]/90"
+                    ? "bg-[#34D399]/20 text-[#34D399] hover:bg-[#34D399]/30"
+                    : "bg-[#34D399] text-black hover:bg-[#34D399]/90"
                 }`}
               >
                 <Play className="w-4 h-4" />

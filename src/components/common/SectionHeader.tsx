@@ -14,7 +14,7 @@ export function SectionHeader({
   badge,
   title,
   description,
-  color = "#00D1FF",
+  color = "#34D399",
   centered = false,
 }: SectionHeaderProps) {
   return (

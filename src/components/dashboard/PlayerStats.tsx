@@ -35,7 +35,7 @@ export function PlayerStats() {
         />
       </div>
 
-      <Card glow glowColor="#00D1FF" className="p-10">
+      <Card glow glowColor="#34D399" className="p-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Graphique Radar Hexagonal */}
           <div className="relative">
@@ -43,26 +43,26 @@ export function PlayerStats() {
               <ResponsiveContainer width="100%" height="100%">
                 <RadarChart data={archetypeData}>
                   <PolarGrid
-                    stroke="#00D1FF30"
+                    stroke="#34D39930"
                     strokeWidth={1.5}
                     gridType="polygon"
                   />
                   <PolarAngleAxis
                     dataKey="archetype"
                     tick={{ fill: "#ffffff", fontSize: 13, fontWeight: 500 }}
-                    stroke="#00D1FF40"
+                    stroke="#34D39940"
                   />
                   <PolarRadiusAxis
                     angle={90}
                     domain={[0, 100]}
                     tick={{ fill: "#ffffff60", fontSize: 11 }}
-                    stroke="#00D1FF20"
+                    stroke="#34D39920"
                   />
                   <Radar
                     name="Scores d'archétype"
                     dataKey="value"
-                    stroke="#00D1FF"
-                    fill="#00D1FF"
+                    stroke="#34D399"
+                    fill="#34D399"
                     fillOpacity={0.25}
                     strokeWidth={3}
                   />
@@ -72,7 +72,7 @@ export function PlayerStats() {
 
             {/* Label central */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none">
-              <div className="text-4xl font-bold text-[#00D1FF] mb-1">
+              <div className="text-4xl font-bold text-[#34D399] mb-1">
                 {dominantArchetype.value}
               </div>
               <div className="text-sm text-white/60">Score principal</div>
@@ -85,7 +85,7 @@ export function PlayerStats() {
               <h3 className="text-xl font-semibold mb-2">Répartition des archétypes</h3>
               <p className="text-white/60 text-sm">
                 Votre archétype le plus fort est{" "}
-                <span className="text-[#00D1FF] font-semibold">
+                <span className="text-[#34D399] font-semibold">
                   {dominantArchetype.archetype}
                 </span>
               </p>
@@ -103,7 +103,7 @@ export function PlayerStats() {
                         w-8 h-8 rounded-lg flex items-center justify-center text-xs font-semibold
                         ${
                           isDominant
-                            ? "bg-[#00D1FF]/20 text-[#00D1FF]"
+                            ? "bg-[#34D399]/20 text-[#34D399]"
                             : "bg-white/10 text-white/60"
                         }
                       `}
@@ -112,7 +112,7 @@ export function PlayerStats() {
                       </div>
                       <span
                         className={`font-medium ${
-                          isDominant ? "text-[#00D1FF]" : "text-white/80"
+                          isDominant ? "text-[#34D399]" : "text-white/80"
                         }`}
                       >
                         {item.archetype}
@@ -120,7 +120,7 @@ export function PlayerStats() {
                     </div>
                     <span
                       className={`font-semibold ${
-                        isDominant ? "text-[#00D1FF]" : "text-white/60"
+                        isDominant ? "text-[#34D399]" : "text-white/60"
                       }`}
                     >
                       {item.value}%
@@ -131,7 +131,7 @@ export function PlayerStats() {
                     <div
                       className={`h-full rounded-full transition-all duration-1000 ${
                         isDominant
-                          ? "bg-gradient-to-r from-[#00D1FF] to-[#00D1FF]/60 shadow-lg shadow-[#00D1FF]/30"
+                          ? "bg-gradient-to-r from-[#34D399] to-[#34D399]/60 shadow-lg shadow-[#34D399]/30"
                           : "bg-gradient-to-r from-white/40 to-white/20"
                       }`}
                       style={{ width: `${item.value}%` }}
@@ -142,8 +142,8 @@ export function PlayerStats() {
             })}
 
             {/* Carte d'information */}
-            <div className="mt-8 p-5 rounded-2xl bg-[#00D1FF]/5 border border-[#00D1FF]/20">
-              <h4 className="font-semibold text-[#00D1FF] mb-2">
+            <div className="mt-8 p-5 rounded-2xl bg-[#34D399]/5 border border-[#34D399]/20">
+              <h4 className="font-semibold text-[#34D399] mb-2">
                 Archétype Medic
               </h4>
               <p className="text-sm text-white/70">

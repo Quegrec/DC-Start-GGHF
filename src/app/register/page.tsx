@@ -72,9 +72,9 @@ export default function RegisterPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#0a0a0a] text-white pt-28 pb-16">
+    <main className="min-h-screen bg-[#0B0F19] text-white pt-28 pb-16">
       <div className="max-w-md mx-auto px-6">
-        <Card glow glowColor="#00D1FF" className="p-7 sm:p-8">
+        <Card glow glowColor="#34D399" className="p-7 sm:p-8">
           <div className="mb-6">
             <h1 className="text-3xl font-bold">Inscription</h1>
             <p className="text-sm text-white/60 mt-2">
@@ -85,7 +85,7 @@ export default function RegisterPage() {
           <form onSubmit={handleSubmit} className="space-y-4">
             <label className="block">
               <span className="text-sm text-white/70 mb-2 inline-flex items-center gap-2">
-                <AtSign className="w-4 h-4 text-[#00D1FF]" />
+                <AtSign className="w-4 h-4 text-[#34D399]" />
                 Email
               </span>
               <input
@@ -93,13 +93,13 @@ export default function RegisterPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@example.com"
-                className="w-full h-11 px-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:border-[#00D1FF]/50"
+                className="w-full h-11 px-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:border-[#34D399]/50"
               />
             </label>
 
             <label className="block">
               <span className="text-sm text-white/70 mb-2 inline-flex items-center gap-2">
-                <User className="w-4 h-4 text-[#00D1FF]" />
+                <User className="w-4 h-4 text-[#34D399]" />
                 Pseudo
               </span>
               <input
@@ -107,13 +107,13 @@ export default function RegisterPage() {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="Ton pseudo"
-                className="w-full h-11 px-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:border-[#00D1FF]/50"
+                className="w-full h-11 px-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:border-[#34D399]/50"
               />
             </label>
 
             <label className="block">
               <span className="text-sm text-white/70 mb-2 inline-flex items-center gap-2">
-                <Lock className="w-4 h-4 text-[#00D1FF]" />
+                <Lock className="w-4 h-4 text-[#34D399]" />
                 Mot de passe
               </span>
               <input
@@ -121,13 +121,13 @@ export default function RegisterPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Au moins 8 caracteres"
-                className="w-full h-11 px-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:border-[#00D1FF]/50"
+                className="w-full h-11 px-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:border-[#34D399]/50"
               />
             </label>
 
             <label className="block">
               <span className="text-sm text-white/70 mb-2 inline-flex items-center gap-2">
-                <Lock className="w-4 h-4 text-[#00D1FF]" />
+                <Lock className="w-4 h-4 text-[#34D399]" />
                 Confirmation
               </span>
               <input
@@ -135,7 +135,7 @@ export default function RegisterPage() {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 placeholder="Repete ton mot de passe"
-                className="w-full h-11 px-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:border-[#00D1FF]/50"
+                className="w-full h-11 px-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:border-[#34D399]/50"
               />
             </label>
 
@@ -144,7 +144,7 @@ export default function RegisterPage() {
             <button
               type="submit"
               disabled={submitting}
-              className="w-full h-11 rounded-xl bg-[#00D1FF] text-black font-semibold hover:bg-[#00D1FF]/90 transition-colors disabled:opacity-70 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2"
+              className="w-full h-11 rounded-xl bg-[#34D399] text-black font-semibold hover:bg-[#34D399]/90 transition-colors disabled:opacity-70 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2"
             >
               {submitting ? "Creation..." : "Creer mon compte"}
               <ArrowRight className="w-4 h-4" />
@@ -153,7 +153,7 @@ export default function RegisterPage() {
 
           <div className="mt-6 text-sm text-white/60">
             Deja inscrit ?{" "}
-            <Link href="/login" className="text-[#00D1FF] hover:underline">
+            <Link href="/login" className="text-[#34D399] hover:underline">
               Se connecter
             </Link>
           </div>

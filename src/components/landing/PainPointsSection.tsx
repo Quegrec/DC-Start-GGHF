@@ -84,7 +84,7 @@ export function PainPointsSection() {
         {/* Transition text */}
         <div className="mt-20 text-center">
           <p className="text-2xl font-semibold text-white/70">
-            <span className="text-[#00D1FF]">GGHF</span> change la donne.
+            <span className="text-[#34D399]">GGHF</span> change la donne.
           </p>
         </div>
       </div>

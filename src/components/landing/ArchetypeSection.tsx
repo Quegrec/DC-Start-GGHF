@@ -35,27 +35,27 @@ export function ArchetypeSection() {
     <section id="archetype-test" className="relative py-32 px-6">
       {/* Background accent */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#00D1FF]/5 rounded-full blur-[150px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#34D399]/5 rounded-full blur-[150px]" />
       </div>
 
       <div className="relative max-w-6xl mx-auto">
         {/* Section header */}
         <div className="max-w-3xl mx-auto text-center mb-16 md:mb-20">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#00D1FF]/10 border border-[#00D1FF]/20 mb-6">
-            <Brain className="w-4 h-4 text-[#00D1FF]" />
-            <span className="text-sm text-[#00D1FF]">Votre profil de joueur</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#34D399]/10 border border-[#34D399]/20 mb-6">
+            <Brain className="w-4 h-4 text-[#34D399]" />
+            <span className="text-sm text-[#34D399]">Votre profil de joueur</span>
           </div>
 
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
             Découvrez{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00D1FF] to-[#00D1FF]/70">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#34D399] to-[#34D399]/70">
               qui vous êtes
             </span>{" "}
             vraiment en jeu
           </h2>
 
           <p className="text-lg md:text-xl text-white/50 leading-relaxed">
-            Que vous soyez fan de <span className="text-[#00D1FF]">MMO</span>, de{" "}
+            Que vous soyez fan de <span className="text-[#34D399]">MMO</span>, de{" "}
             <span className="text-[#10B981]">jeux solo narratifs</span>, de{" "}
             <span className="text-[#8B5CF6]">construction</span> ou de{" "}
             <span className="text-[#F59E0B]">compétition</span>, notre test révèle
@@ -136,20 +136,20 @@ export function ArchetypeSection() {
             <span className="text-sm text-white/60">Le Conteur</span>
           </div>
           <div className="flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10">
-            <Users className="w-4 h-4 text-[#00D1FF]" />
+            <Users className="w-4 h-4 text-[#34D399]" />
             <span className="text-sm text-white/60">Le Social</span>
           </div>
         </div>
 
         {/* Secret callout */}
         <div className="relative max-w-3xl mx-auto">
-          <div className="p-6 md:p-8 rounded-2xl md:rounded-3xl bg-gradient-to-r from-[#00D1FF]/10 via-[#00D1FF]/5 to-[#00D1FF]/10 border border-[#00D1FF]/20 backdrop-blur-sm">
+          <div className="p-6 md:p-8 rounded-2xl md:rounded-3xl bg-gradient-to-r from-[#34D399]/10 via-[#34D399]/5 to-[#34D399]/10 border border-[#34D399]/20 backdrop-blur-sm">
             <div className="flex items-start gap-4">
-              <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-[#00D1FF]/20 flex items-center justify-center shrink-0">
-                <Sparkles className="w-5 h-5 md:w-6 md:h-6 text-[#00D1FF]" />
+              <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-[#34D399]/20 flex items-center justify-center shrink-0">
+                <Sparkles className="w-5 h-5 md:w-6 md:h-6 text-[#34D399]" />
               </div>
               <div>
-                <h4 className="text-base md:text-lg font-semibold text-[#00D1FF] mb-2">
+                <h4 className="text-base md:text-lg font-semibold text-[#34D399] mb-2">
                   Pour tous les joueurs
                 </h4>
                 <p className="text-sm md:text-base text-white/70 leading-relaxed">
@@ -169,10 +169,10 @@ export function ArchetypeSection() {
         <div className="text-center mt-10 md:mt-12">
           <Link
             href="/app/quiz"
-            className="inline-flex items-center gap-3 px-6 md:px-8 py-3 md:py-4 rounded-full md:rounded-2xl bg-[#00D1FF] text-black font-semibold text-base md:text-lg hover:shadow-2xl hover:shadow-[#00D1FF]/25 transition-all duration-300"
+            className="inline-flex items-center gap-3 px-6 md:px-8 py-3 md:py-4 rounded-full md:rounded-2xl bg-[#34D399] text-black font-semibold text-base md:text-lg hover:shadow-2xl hover:shadow-[#34D399]/25 transition-all duration-300"
           >
             Découvrir mon Archétype
-            <span className="text-[#00D1FF]/60 bg-black/20 px-2 py-0.5 rounded text-sm">
+            <span className="text-[#34D399]/60 bg-black/20 px-2 py-0.5 rounded text-sm">
               Gratuit
             </span>
           </Link>

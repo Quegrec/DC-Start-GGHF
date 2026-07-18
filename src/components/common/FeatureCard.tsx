@@ -17,7 +17,7 @@ export function FeatureCard({
   title,
   description,
   ctaText,
-  color = "#00D1FF",
+  color = "#34D399",
 }: FeatureCardProps) {
   return (
     <Link

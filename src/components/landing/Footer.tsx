@@ -9,11 +9,11 @@ export function Footer() {
           <div className="md:col-span-2">
             <Link href="/" className="group flex items-center mb-4">
               <div className="relative flex items-center">
-                <div className="w-10 h-10 rounded-xl bg-[#00D1FF] flex items-center justify-center shadow-lg shadow-[#00D1FF]/30 group-hover:shadow-[#00D1FF]/50 transition-all duration-300">
+                <div className="w-10 h-10 rounded-xl bg-[#34D399] flex items-center justify-center shadow-lg shadow-[#34D399]/30 group-hover:shadow-[#34D399]/50 transition-all duration-300">
                   <span className="font-black text-base text-black tracking-tight">GG</span>
                 </div>
                 <span className="ml-1.5 text-lg font-bold text-white/90 tracking-tight">
-                  HF<span className="text-[#00D1FF]">.</span>
+                  HF<span className="text-[#34D399]">.</span>
                 </span>
               </div>
             </Link>
