@@ -25,14 +25,20 @@ function validateDatabaseUrl() {
   }
 }
 
-validateDatabaseUrl();
-
-export const db =
-  globalForPrisma.prisma ??
-  new PrismaClient({
+function createClient(): PrismaClient {
+  // La validation ne s'exécute qu'au premier accès réel à la base :
+  // l'import du module reste sans effet (le build Next.js peut collecter
+  // les pages sans DATABASE_URL).
+  validateDatabaseUrl();
+  return new PrismaClient({
     log: process.env.NODE_ENV === "development" ? ["error", "warn"] : ["error"],
   });
-
-if (process.env.NODE_ENV !== "production") {
-  globalForPrisma.prisma = db;
 }
+
+export const db = new Proxy({} as PrismaClient, {
+  get(_target, prop) {
+    const client = (globalForPrisma.prisma ??= createClient());
+    const value = Reflect.get(client, prop, client);
+    return typeof value === "function" ? value.bind(client) : value;
+  },
+});
