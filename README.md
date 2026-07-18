@@ -1,4 +1,4 @@
-# GGHF - Gaming Growth & Happiness Framework
+# GGHF - Good Games & Have Fun
 
 Le premier compagnon intelligent qui décode votre ADN de joueur pour une expérience gaming sur-mesure.
 

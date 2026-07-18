@@ -31,7 +31,7 @@ export function IconBox({
   icon: Icon,
   emoji,
   size = "md",
-  color = "#34D399",
+  color = "#0EA5E9",
   className,
 }: IconBoxProps) {
   return (

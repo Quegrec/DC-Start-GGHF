@@ -11,15 +11,15 @@ export function HeroSection() {
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
-            backgroundImage: `linear-gradient(#34D399 1px, transparent 1px), linear-gradient(90deg, #34D399 1px, transparent 1px)`,
+            backgroundImage: `linear-gradient(#0EA5E9 1px, transparent 1px), linear-gradient(90deg, #0EA5E9 1px, transparent 1px)`,
             backgroundSize: "60px 60px",
           }}
         />
       </div>
 
       {/* Floating elements */}
-      <div className="absolute top-1/4 left-10 w-2 h-2 bg-[#34D399] rounded-full animate-pulse" />
-      <div className="absolute top-1/3 right-20 w-3 h-3 bg-[#34D399]/50 rounded-full animate-pulse delay-300" />
+      <div className="absolute top-1/4 left-10 w-2 h-2 bg-[#0EA5E9] rounded-full animate-pulse" />
+      <div className="absolute top-1/3 right-20 w-3 h-3 bg-[#0EA5E9]/50 rounded-full animate-pulse delay-300" />
       <div className="absolute bottom-1/3 left-1/4 w-2 h-2 bg-[#10B981] rounded-full animate-pulse delay-500" />
 
       <div className="relative max-w-5xl mx-auto px-6 text-center">
