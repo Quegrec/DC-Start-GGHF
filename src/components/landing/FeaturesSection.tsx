@@ -53,9 +53,9 @@ export function FeaturesSection() {
       <div className="max-w-6xl mx-auto">
         {/* Section header */}
         <div className="max-w-3xl mx-auto text-center mb-20">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#34D399]/10 border border-[#34D399]/20 mb-6">
-            <Rocket className="w-4 h-4 text-[#34D399]" />
-            <span className="text-sm text-[#34D399]">Fonctionnalités</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#38BDF8]/10 border border-[#38BDF8]/20 mb-6">
+            <Rocket className="w-4 h-4 text-[#38BDF8]" />
+            <span className="text-sm text-[#38BDF8]">Fonctionnalités</span>
           </div>
 
           <h2 className="text-4xl md:text-5xl font-bold mb-6">

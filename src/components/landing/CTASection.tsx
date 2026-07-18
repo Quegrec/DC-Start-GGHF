@@ -22,9 +22,9 @@ export function CTASection() {
           {/* Content */}
           <div className="relative p-12 md:p-16 text-center">
             {/* Floating badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#34D399]/10 border border-[#34D399]/20 mb-8">
-              <Sparkles className="w-4 h-4 text-[#34D399]" />
-              <span className="text-sm text-[#34D399]">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#38BDF8]/10 border border-[#38BDF8]/20 mb-8">
+              <Sparkles className="w-4 h-4 text-[#38BDF8]" />
+              <span className="text-sm text-[#38BDF8]">
                 Prêt à vous découvrir ?
               </span>
             </div>
